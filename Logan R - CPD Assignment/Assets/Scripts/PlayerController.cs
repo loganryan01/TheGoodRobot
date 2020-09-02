@@ -22,12 +22,20 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         ConstraintPlayerPosition();
-        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        isOnGround = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
+        }
+
+        if (collision.gameObject.CompareTag("Enemy") && !isOnGround ||
+            collision.gameObject.CompareTag("Box") && !isOnGround)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     // Move the player through the arrow keys and jump with the spacebar
@@ -36,8 +44,13 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
+        // Move through Rigidbody
+        //playerRb.AddForce(Vector3.right * speed * horizontalInput);
+        //playerRb.AddForce(Vector3.forward * speed * verticalInput);
+
+        // Move through translate
+        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime);
 
         if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
