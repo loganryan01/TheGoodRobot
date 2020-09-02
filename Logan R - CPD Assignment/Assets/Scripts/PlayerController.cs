@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 10.0f;
     private Rigidbody playerRb;
+    private Vector3 startPos;
+
+    public float speed = 10.0f;
     public float jumpForce;
     public float gravityModifier;
+
     public bool isOnGround;
     
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
     }
@@ -35,6 +39,12 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.CompareTag("Box") && !isOnGround)
         {
             Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Enemy") && isOnGround ||
+            collision.gameObject.CompareTag("Lightning"))
+        {
+            transform.position = startPos;
         }
     }
 
