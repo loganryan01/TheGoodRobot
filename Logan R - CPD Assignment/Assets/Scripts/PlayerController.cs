@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
     private Vector3 startPos;
     public Animator animator;
-    private GameObject leftArm;
 
     public float speed = 10.0f;
     public float jumpForce;
@@ -15,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isOnGround;
     public bool isAttacking;
+    public bool turning = false;
     
     // Start is called before the first frame update
     void Start()
@@ -50,12 +50,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && isAttacking ||
             collision.gameObject.CompareTag("Box") && isAttacking)
         {
-            Debug.Log("There is a collision with the arms");
             collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Enemy") && isOnGround ||
+        if (collision.gameObject.CompareTag("Enemy") && isOnGround && !isAttacking ||
             collision.gameObject.CompareTag("Lightning"))
         {
             transform.position = startPos;
@@ -73,29 +72,40 @@ public class PlayerController : MonoBehaviour
         if (fireInput == 1)
         {
             StartCoroutine(RotatePlayerArms());
-            //animator.Play("Attack_Start");
         }
 
-        // If the player is rotatiing to the right stop them from going greater than 90
-        if (horizontalInput > 0)
+        if (horizontalInput > 0 && !turning)
         {
-            transform.eulerAngles = new Vector3(0, 90, 0);
+            if (transform.eulerAngles.y != 90)
+            {
+                turning = true;
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, 90, 0), 1));
+            }
         }
-        else if (horizontalInput < 0)
+        else if (horizontalInput < 0 && !turning)
         {
-            transform.eulerAngles = new Vector3(0, 270, 0);
+            if (transform.eulerAngles.y != 270)
+            {
+                turning = true;
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, 270, 0), 1));
+            }
         }
-
-        if (verticalInput > 0)
+        else if (verticalInput > 0 && !turning)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
+            if (transform.eulerAngles.y != 0)
+            {
+                turning = true;
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, 0, 0), 1));
+            }
         }
-        else if (verticalInput < 0)
+        else if (verticalInput < 0 && !turning)
         {
-            transform.eulerAngles = new Vector3(0, 180, 0);
+            if (transform.eulerAngles.y != 180)
+            {
+                turning = true;
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, 180, 0), 1));
+            }
         }
-
-        
 
         // Move through translate
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
@@ -126,4 +136,32 @@ public class PlayerController : MonoBehaviour
 
         isAttacking = false;
     }
+
+    IEnumerator LerpFunction(Quaternion endValue, float duration)
+    {
+        float time = 0;
+        Quaternion startValue = transform.rotation;
+
+        while (time < duration)
+        {
+            transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+        }
+        transform.rotation = endValue;
+        turning = false;
+    }
+
+    //void LerpFunction(Quaternion endValue, float duration)
+    //{
+    //    float time = 0;
+    //    Quaternion startValue = transform.rotation;
+
+    //    while (time < duration)
+    //    {
+    //        transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
+    //        time += Time.deltaTime;
+    //    }
+    //    transform.rotation = endValue;
+    //}
 }
