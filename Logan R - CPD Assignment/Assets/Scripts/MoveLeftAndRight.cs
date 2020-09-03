@@ -38,8 +38,6 @@ public class MoveLeftAndRight : MonoBehaviour
                     numberOfChanges++;
                     direction = Vector3.right;
                 }
-
-                Debug.Log(numberOfChanges);
             }
             else
             {

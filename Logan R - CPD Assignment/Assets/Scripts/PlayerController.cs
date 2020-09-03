@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !isOnGround ||
             collision.gameObject.CompareTag("Box") && !isOnGround)
         {
+            collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
             Destroy(collision.gameObject);
         }
 
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
         //playerRb.AddForce(Vector3.forward * speed * verticalInput);
 
         // Move through translate
+        // Rotate based on the direction they are going
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
         transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime);
 
