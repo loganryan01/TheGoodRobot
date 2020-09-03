@@ -17,7 +17,9 @@ public class RotateArms : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && transform.rotation.x >= 0.0f)
+        float fireInput = Input.GetAxis("Fire3");
+        
+        if (fireInput == 1 && transform.rotation.x >= 0.0f)
         {
             rotateArmsUp = true;
         }

@@ -54,17 +54,14 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-
-        // Move through Rigidbody
-        //playerRb.AddForce(Vector3.right * speed * horizontalInput);
-        //playerRb.AddForce(Vector3.forward * speed * verticalInput);
+        float jumpInput = Input.GetAxis("Jump");
 
         // Move through translate
         // Rotate based on the direction they are going
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
         transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime);
 
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
+        if (jumpInput == 1 && isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
