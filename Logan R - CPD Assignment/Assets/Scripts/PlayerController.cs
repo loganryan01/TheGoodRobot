@@ -6,12 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private Vector3 startPos;
+    public Animator animator;
+    private GameObject leftArm;
 
     public float speed = 10.0f;
     public float jumpForce;
     public float gravityModifier;
 
     public bool isOnGround;
+    public bool isAttacking;
     
     // Start is called before the first frame update
     void Start()
@@ -35,9 +38,19 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
         }
 
+        // Check if player jumps on enemy or box
         if (collision.gameObject.CompareTag("Enemy") && !isOnGround ||
             collision.gameObject.CompareTag("Box") && !isOnGround)
         {
+            collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
+            Destroy(collision.gameObject);
+        }
+
+        // Check if player attacks enemy or box
+        if (collision.gameObject.CompareTag("Enemy") && isAttacking ||
+            collision.gameObject.CompareTag("Box") && isAttacking)
+        {
+            Debug.Log("There is a collision with the arms");
             collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
             Destroy(collision.gameObject);
         }
@@ -55,11 +68,38 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float jumpInput = Input.GetAxis("Jump");
+        float fireInput = Input.GetAxis("Fire3");
+
+        if (fireInput == 1)
+        {
+            StartCoroutine(RotatePlayerArms());
+            //animator.Play("Attack_Start");
+        }
+
+        // If the player is rotatiing to the right stop them from going greater than 90
+        if (horizontalInput > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 90, 0);
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 270, 0);
+        }
+
+        if (verticalInput > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (verticalInput < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+
+        
 
         // Move through translate
-        // Rotate based on the direction they are going
-        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime);
-        transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime);
+        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
+        transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
 
         if (jumpInput == 1 && isOnGround)
         {
@@ -75,5 +115,15 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
         }
+    }
+
+    IEnumerator RotatePlayerArms()
+    {
+        isAttacking = true;
+        animator.Play("Attack_Start");
+
+        yield return new WaitForSeconds(1.0f);
+
+        isAttacking = false;
     }
 }
