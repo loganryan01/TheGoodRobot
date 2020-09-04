@@ -53,11 +53,18 @@ public class PlayerController : MonoBehaviour
                 playerCoins++;
             }
             
-            if (collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Enemy"))
+            Destroy(collision.gameObject);
+        }
+
+        // Check if player attacks enemy or box
+        if (collision.gameObject.CompareTag("Enemy") && isAttacking ||
+            collision.gameObject.CompareTag("Box") && isAttacking)
+        {
+            if (collision.gameObject.CompareTag("Box"))
             {
-                collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
+                playerCoins++;
             }
-            
+
             Destroy(collision.gameObject);
         }
 
@@ -65,22 +72,6 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.CompareTag("Lightning"))
         {
             transform.position = startPos;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Box"))
-        {
-            playerCoins++;
-        }
-
-        // Check if player attacks enemy or box
-        if (other.gameObject.CompareTag("Enemy") && isAttacking ||
-            other.gameObject.CompareTag("Box") && isAttacking)
-        {
-            other.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
-            Destroy(other.gameObject);
         }
     }
 
@@ -92,7 +83,7 @@ public class PlayerController : MonoBehaviour
         float jumpInput = Input.GetAxis("Jump");
         float fireInput = Input.GetAxis("Fire3");
 
-        if (fireInput == 1)
+        if (fireInput == 1 && !isAttacking)
         {
             StartCoroutine(RotatePlayerArms());
         }

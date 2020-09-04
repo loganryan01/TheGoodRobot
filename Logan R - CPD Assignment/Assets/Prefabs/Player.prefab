@@ -233,7 +233,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4485453216852860443}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -326,7 +326,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4791814433636818154}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -458,11 +458,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7493128091565415719}
+  scoreText: {fileID: 0}
   speed: 5
   jumpForce: 6
   gravityModifier: 1
+  maximumRotation: 90
+  playerCoins: 0
   isOnGround: 0
   isAttacking: 0
+  turning: 0
 --- !u!1 &7119224093429781132
 GameObject:
   m_ObjectHideFlags: 0

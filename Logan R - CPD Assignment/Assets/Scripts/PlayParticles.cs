@@ -15,11 +15,12 @@ public class PlayParticles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        smokeParticles.transform.position = transform.position;
+        
     }
 
     public void OnDestroy()
     {
+        Instantiate(smokeParticles, transform.position, smokeParticles.transform.rotation);
         smokeParticles.Play();
     }
 }
