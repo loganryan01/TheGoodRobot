@@ -14,10 +14,4 @@ public class UpdateScore : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<PlayerController>();
         scoreText.text = "Coins: " + player.playerCoins;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
