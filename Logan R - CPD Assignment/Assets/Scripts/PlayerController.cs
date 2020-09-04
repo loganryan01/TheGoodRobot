@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
     private Vector3 startPos;
     public Animator animator;
+    public Text scoreText;
 
     public float speed = 10.0f;
     public float jumpForce;
     public float gravityModifier;
+    public float maximumRotation = 90.0f;
+    public float playerCoins = 0;
 
     public bool isOnGround;
     public bool isAttacking;
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         MovePlayer();
         ConstraintPlayerPosition();
+        scoreText.text = "Coins: " + playerCoins;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -42,14 +47,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !isOnGround ||
             collision.gameObject.CompareTag("Box") && !isOnGround)
         {
-            collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
-            Destroy(collision.gameObject);
-        }
-
-        // Check if player attacks enemy or box
-        if (collision.gameObject.CompareTag("Enemy") && isAttacking ||
-            collision.gameObject.CompareTag("Box") && isAttacking)
-        {
+            if (collision.gameObject.CompareTag("Box"))
+            {
+                playerCoins++;
+            }
+            
             collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
             Destroy(collision.gameObject);
         }
@@ -58,6 +60,22 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.CompareTag("Lightning"))
         {
             transform.position = startPos;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Box"))
+        {
+            playerCoins++;
+        }
+
+        // Check if player attacks enemy or box
+        if (other.gameObject.CompareTag("Enemy") && isAttacking ||
+            other.gameObject.CompareTag("Box") && isAttacking)
+        {
+            other.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
+            Destroy(other.gameObject);
         }
     }
 
@@ -74,36 +92,36 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(RotatePlayerArms());
         }
 
-        if (horizontalInput > 0 && !turning)
+        if (verticalInput > 0 && !turning)
         {
-            if (transform.eulerAngles.y != 90)
+            if (transform.eulerAngles.y != Vector3.zero.y)
             {
                 turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, 90, 0), 1));
-            }
-        }
-        else if (horizontalInput < 0 && !turning)
-        {
-            if (transform.eulerAngles.y != 270)
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, 270, 0), 1));
-            }
-        }
-        else if (verticalInput > 0 && !turning)
-        {
-            if (transform.eulerAngles.y != 0)
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, 0, 0), 1));
+                StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
             }
         }
         else if (verticalInput < 0 && !turning)
         {
-            if (transform.eulerAngles.y != 180)
+            if (transform.eulerAngles.y != (maximumRotation * 2.0f))
             {
                 turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, 180, 0), 1));
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 2.0f), 0), 1));
+            }
+        }
+        else if (horizontalInput < 0 && !turning)
+        {
+            if (transform.eulerAngles.y != (maximumRotation * 3.0f))
+            {
+                turning = true;
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 3.0f), 0), 1));
+            }
+        }
+        else if (horizontalInput > 0 && !turning)
+        {
+            if (transform.eulerAngles.y != maximumRotation)
+            {
+                turning = true;
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation, 0), 1));
             }
         }
 
@@ -151,17 +169,4 @@ public class PlayerController : MonoBehaviour
         transform.rotation = endValue;
         turning = false;
     }
-
-    //void LerpFunction(Quaternion endValue, float duration)
-    //{
-    //    float time = 0;
-    //    Quaternion startValue = transform.rotation;
-
-    //    while (time < duration)
-    //    {
-    //        transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
-    //        time += Time.deltaTime;
-    //    }
-    //    transform.rotation = endValue;
-    //}
 }
