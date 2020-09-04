@@ -45,14 +45,19 @@ public class PlayerController : MonoBehaviour
 
         // Check if player jumps on enemy or box
         if (collision.gameObject.CompareTag("Enemy") && !isOnGround ||
-            collision.gameObject.CompareTag("Box") && !isOnGround)
+            collision.gameObject.CompareTag("Box") && !isOnGround ||
+            collision.gameObject.CompareTag("Coin"))
         {
-            if (collision.gameObject.CompareTag("Box"))
+            if (collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Coin"))
             {
                 playerCoins++;
             }
             
-            collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
+            if (collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Enemy"))
+            {
+                collision.gameObject.GetComponent<PlayParticles>().smokeParticles.Play();
+            }
+            
             Destroy(collision.gameObject);
         }
 

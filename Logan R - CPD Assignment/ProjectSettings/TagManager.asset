@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Box
   - Lightning
+  - Coin
   layers:
   - Default
   - TransparentFX
