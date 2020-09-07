@@ -5,21 +5,22 @@ using UnityEngine;
 public class Robo3Script : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float jumpForce = 10.0f;
+    public float jumpForce = 8.0f;
     public float maximumRotation = 90.0f;
+    public float gravity = 20.0f;
 
     public Animator robo3Controller;
-    public SkinnedMeshRenderer meshRenderer;
-    public new MeshCollider collider;
+    public CharacterController robo3CharacterController;
+    private Vector3 moveDirection = Vector3.zero;
 
-    public bool jumping;
     public bool turning = false;
     public bool isAttacking;
+    public bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        robo3CharacterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -30,9 +31,8 @@ public class Robo3Script : MonoBehaviour
         float jumpInput = Input.GetAxis("Jump");
         float fireInput = Input.GetAxis("Fire3");
 
-        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
-        transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
-        
+        robo3CharacterController.Move(Vector3.right * horizontalInput * speed * Time.deltaTime);
+        robo3CharacterController.Move(Vector3.forward * verticalInput * speed * Time.deltaTime);
 
         if (horizontalInput != 0 || verticalInput != 0)
         {
@@ -43,96 +43,44 @@ public class Robo3Script : MonoBehaviour
             robo3Controller.SetBool("Run", false);
         }
 
-        if (jumpInput != 0)
+        if (isGrounded && jumpInput == 1)
         {
-            jumping = true;
+            moveDirection.y = jumpForce;
+            isGrounded = false;
         }
-        
-        if (jumping && transform.position.y <= 3)
-        {
-            //robo3Controller.SetBool("Jump", true);
-            transform.Translate(Vector3.up * jumpForce * Time.deltaTime, Space.World);
-
-            if (transform.position.y >= 3)
-            {
-                jumping = false;
-            }
-        }
-        else if (!jumping && transform.position.y > 0)
-        {
-            //robo3Controller.SetBool("Jump", false);
-            transform.Translate(Vector3.up * -jumpForce * Time.deltaTime, Space.World);
-        }
-
-        if (verticalInput > 0 && !turning)
-        {
-            if (transform.eulerAngles.y != Vector3.zero.y)
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
-            }
-        }
-        else if (verticalInput < 0 && !turning)
-        {
-            if (transform.eulerAngles.y != (maximumRotation * 2.0f))
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 2.0f), 0), 1));
-            }
-        }
-        else if (horizontalInput < 0 && !turning)
-        {
-            if (transform.eulerAngles.y != (maximumRotation * 3.0f))
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 3.0f), 0), 1));
-            }
-        }
-        else if (horizontalInput > 0 && !turning)
-        {
-            if (transform.eulerAngles.y != maximumRotation)
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation, 0), 1));
-            }
-        }
+        moveDirection.y -= gravity * Time.deltaTime;
+        robo3CharacterController.Move(moveDirection * Time.deltaTime);
 
         if (fireInput == 1)
         {
             robo3Controller.SetBool("Attack", true);
-        }
-        else
-        {
-            robo3Controller.SetBool("Attack", false);
+            isAttacking = true;
         }
 
         if (robo3Controller.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
-            isAttacking = true;
+            robo3Controller.SetBool("Attack", false);
+            isAttacking = false;
         }
-        else 
-        { 
-            isAttacking = false; 
-        }
-
-        UpdateCollider();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (collision.gameObject.CompareTag("Player") && isAttacking)
+        if (hit.gameObject.CompareTag("Enemy") && isAttacking)
         {
-            Debug.Log("Touching Player");
-            Destroy(collision.gameObject);
+            Destroy(hit.gameObject);
         }
-    }
 
-    public void UpdateCollider()
-    {
-        Mesh colliderMesh = new Mesh();
-        meshRenderer.BakeMesh(colliderMesh);
-        collider.sharedMesh = null;
-        collider.sharedMesh = colliderMesh;
+        if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
+        {
+            moveDirection.y = jumpForce;
+            Destroy(hit.gameObject);
+        }
+
+        if (hit.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
     }
 
     IEnumerator LerpFunction(Quaternion endValue, float duration)
