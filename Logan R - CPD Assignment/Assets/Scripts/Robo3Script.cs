@@ -106,14 +106,24 @@ public class Robo3Script : MonoBehaviour
             robo3Controller.SetBool("Attack", false);
         }
 
+        if (robo3Controller.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            isAttacking = true;
+        }
+        else 
+        { 
+            isAttacking = false; 
+        }
+
         UpdateCollider();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Player") && isAttacking)
         {
             Debug.Log("Touching Player");
+            Destroy(collision.gameObject);
         }
     }
 
