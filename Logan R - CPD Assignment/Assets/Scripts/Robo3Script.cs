@@ -12,9 +12,9 @@ public class Robo3Script : MonoBehaviour
     public SkinnedMeshRenderer meshRenderer;
     public new MeshCollider collider;
 
-    public bool isOnGround;
     public bool jumping;
     public bool turning = false;
+    public bool isAttacking;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class Robo3Script : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float jumpInput = Input.GetAxis("Jump");
+        float fireInput = Input.GetAxis("Fire3");
 
         transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
         transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
@@ -94,6 +95,15 @@ public class Robo3Script : MonoBehaviour
                 turning = true;
                 StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation, 0), 1));
             }
+        }
+
+        if (fireInput == 1)
+        {
+            robo3Controller.SetBool("Attack", true);
+        }
+        else
+        {
+            robo3Controller.SetBool("Attack", false);
         }
 
         UpdateCollider();
