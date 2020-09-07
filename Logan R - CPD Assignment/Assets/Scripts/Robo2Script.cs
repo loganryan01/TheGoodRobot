@@ -12,6 +12,10 @@ public class Robo2Script : MonoBehaviour
 
     public float xRange = 5;
     public float speed = 10.0f;
+    private float faceRight = 90;
+    private float faceLeft = 270;
+
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -23,32 +27,39 @@ public class Robo2Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        robo2Controller.Move(direction * speed * Time.deltaTime);
-
-        if (transform.position.x > xRange)
+        if (isDead)
         {
-            // Stop moving and turn
-            direction = Vector3.zero;
-            robo2Animator.SetBool("RightEdge", true);
-            StartCoroutine(LerpFunction(Quaternion.Euler(0, 270.0f, 0), 1.0f));
-
-            if (transform.eulerAngles.y == 270.0f)
-            {
-                robo2Animator.SetBool("RightEdge", false);
-                direction = -Vector3.right;
-            }
+            StartCoroutine(PlayDead());
         }
-        else if (transform.position.x < -xRange)
+        else
         {
-            direction = Vector3.zero;
-            robo2Animator.SetBool("RightEdge", true);
-            StartCoroutine(LerpFunction(Quaternion.Euler(0, 90.0f, 0), 1.0f));
-            
+            robo2Controller.Move(direction * speed * Time.deltaTime);
 
-            if (transform.eulerAngles.y == 90.0f)
+            if (transform.position.x > xRange)
             {
-                robo2Animator.SetBool("RightEdge", false);
-                direction = Vector3.right;
+                // Stop moving and turn
+                direction = Vector3.zero;
+                robo2Animator.SetBool("AtEdge", true);
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, faceLeft, 0), 1.0f));
+
+                if (transform.eulerAngles.y == faceLeft)
+                {
+                    robo2Animator.SetBool("AtEdge", false);
+                    direction = -Vector3.right;
+                }
+            }
+            else if (transform.position.x < -xRange)
+            {
+                direction = Vector3.zero;
+                robo2Animator.SetBool("AtEdge", true);
+                StartCoroutine(LerpFunction(Quaternion.Euler(0, faceRight, 0), 1.0f));
+
+
+                if (transform.eulerAngles.y == faceRight)
+                {
+                    robo2Animator.SetBool("AtEdge", false);
+                    direction = Vector3.right;
+                }
             }
         }
     }
@@ -71,5 +82,12 @@ public class Robo2Script : MonoBehaviour
             yield return null;
         }
         transform.rotation = endValue;
+    }
+
+    IEnumerator PlayDead()
+    {
+        robo2Animator.SetBool("Dead", true);
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 }

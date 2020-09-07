@@ -12,6 +12,7 @@ public class Robo3Script : MonoBehaviour
     public Animator robo3Controller;
     public CharacterController robo3CharacterController;
     private Vector3 moveDirection = Vector3.zero;
+    public Robo2Script enemyScript;
 
     public bool turning = false;
     public bool isAttacking;
@@ -74,7 +75,8 @@ public class Robo3Script : MonoBehaviour
         if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
         {
             moveDirection.y = jumpForce;
-            Destroy(hit.gameObject);
+            enemyScript = hit.gameObject.GetComponent<Robo2Script>();
+            enemyScript.isDead = true;
         }
 
         if (hit.gameObject.CompareTag("Ground"))
