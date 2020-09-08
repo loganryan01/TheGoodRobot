@@ -10,6 +10,7 @@ TagManager:
   - Lightning
   - Coin
   - MovingPlatform
+  - DroppingPlatform
   layers:
   - Default
   - TransparentFX

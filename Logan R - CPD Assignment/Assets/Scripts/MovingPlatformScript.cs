@@ -9,8 +9,8 @@ public class MovingPlatformScript : MonoBehaviour
     public float xRange = 0;
     public float zRange = 0;
 
-    public Vector3 xDirection = Vector3.right;
-    public Vector3 zDirection = Vector3.forward;
+    public Vector3 xDirection = Vector3.zero;
+    public Vector3 zDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -19,10 +19,15 @@ public class MovingPlatformScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (xRange != 0)
         {
+            if (xDirection == Vector3.zero)
+            {
+                xDirection = Vector3.right;
+            }
+            
             if (transform.position.x > xRange)
             {
                 xDirection = -Vector3.right;
@@ -37,6 +42,11 @@ public class MovingPlatformScript : MonoBehaviour
 
         if (zRange != 0)
         {
+            if (zDirection == Vector3.zero)
+            {
+                zDirection = Vector3.forward;
+            }
+
             if (transform.position.z > zRange)
             {
                 zDirection = -Vector3.forward;

@@ -5,14 +5,16 @@ using UnityEngine;
 public class Robo3Script : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float jumpForce = 8.0f;
+    public float jumpForce = 1.0f;
     public float maximumRotation = 90.0f;
-    public float gravity = 20.0f;
+    public float gravity = -9.81f;
 
     public Animator robo3Controller;
     public CharacterController robo3CharacterController;
-    private Vector3 moveDirection = Vector3.zero;
     public Robo2Script enemyScript;
+
+    private Vector3 moveDirection;
+    private Vector3 velocity;
 
     public bool turning = false;
     public bool isAttacking;
@@ -25,15 +27,17 @@ public class Robo3Script : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float jumpInput = Input.GetAxis("Jump");
         float fireInput = Input.GetAxis("Fire3");
 
-        robo3CharacterController.Move(Vector3.right * horizontalInput * speed * Time.deltaTime);
-        robo3CharacterController.Move(Vector3.forward * verticalInput * speed * Time.deltaTime);
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = 0;
+        }
 
         if (horizontalInput != 0 || verticalInput != 0)
         {
@@ -44,13 +48,22 @@ public class Robo3Script : MonoBehaviour
             robo3Controller.SetBool("Run", false);
         }
 
+        Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
+        robo3CharacterController.Move(move * speed * Time.deltaTime);
+
+        if (move != Vector3.zero)
+        {
+            gameObject.transform.forward = move;
+        }
+
         if (isGrounded && jumpInput == 1)
         {
-            moveDirection.y = jumpForce;
+            velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
             isGrounded = false;
         }
-        moveDirection.y -= gravity * Time.deltaTime;
-        robo3CharacterController.Move(moveDirection * Time.deltaTime);
+        velocity.y += gravity * Time.deltaTime;
+
+        robo3CharacterController.Move(velocity * Time.deltaTime);
 
         if (fireInput == 1)
         {
@@ -83,20 +96,12 @@ public class Robo3Script : MonoBehaviour
         {
             isGrounded = true;
         }
-    }
 
-    IEnumerator LerpFunction(Quaternion endValue, float duration)
-    {
-        float time = 0;
-        Quaternion startValue = transform.rotation;
-
-        while (time < duration)
+        if (hit.gameObject.CompareTag("MovingPlatform"))
         {
-            transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
-            time += Time.deltaTime;
-            yield return null;
+            isGrounded = true;
+
+            transform.parent = hit.transform;
         }
-        transform.rotation = endValue;
-        turning = false;
     }
 }
