@@ -9,6 +9,7 @@ TagManager:
   - Box
   - Lightning
   - Coin
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX
