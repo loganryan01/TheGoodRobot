@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DroppingPlatformScript : MonoBehaviour
 {
-    private bool startDrop;
+    public bool playerOnPlatform;
+    private bool drop;
     
     // Start is called before the first frame update
     void Start()
@@ -15,27 +16,22 @@ public class DroppingPlatformScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (startDrop)
+        if (drop)
         {
             transform.Translate(-Vector3.up * 10.0f * Time.deltaTime);
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("There is a collision");
-        
-        if (!startDrop)
+        if (playerOnPlatform)
         {
             StartCoroutine(Drop());
         }
-        
     }
 
     IEnumerator Drop()
     {
+        playerOnPlatform = false;
         // Wait 5 seconds then drop
-        yield return new WaitForSeconds(5);
-        startDrop = true;
+        yield return new WaitForSeconds(1);
+        drop = true;
     }
 }

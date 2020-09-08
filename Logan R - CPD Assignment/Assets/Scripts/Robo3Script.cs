@@ -12,6 +12,7 @@ public class Robo3Script : MonoBehaviour
     public Animator robo3Controller;
     public CharacterController robo3CharacterController;
     public Robo2Script enemyScript;
+    private DroppingPlatformScript droppingPlatform;
 
     private Vector3 moveDirection;
     private Vector3 velocity;
@@ -19,6 +20,7 @@ public class Robo3Script : MonoBehaviour
     public bool turning = false;
     public bool isAttacking;
     public bool isGrounded;
+    public bool onPlatform;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,9 @@ public class Robo3Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //  || onPlatform && velocity.y < 0
+
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float jumpInput = Input.GetAxis("Jump");
@@ -61,6 +66,11 @@ public class Robo3Script : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
             isGrounded = false;
         }
+        //else if (onPlatform && jumpInput == 1)
+        //{
+        //    velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
+        //    onPlatform = false;
+        //}
         velocity.y += gravity * Time.deltaTime;
 
         robo3CharacterController.Move(velocity * Time.deltaTime);
@@ -76,32 +86,48 @@ public class Robo3Script : MonoBehaviour
             robo3Controller.SetBool("Attack", false);
             isAttacking = false;
         }
+
+        if (robo3CharacterController.collisionFlags == CollisionFlags.None)
+        {
+            isGrounded = false;
+            transform.parent = null;
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Enemy") && isAttacking)
+        if (hit.gameObject.tag == "Enemy" && isAttacking)
         {
-            Destroy(hit.gameObject);
+            enemyScript = hit.gameObject.GetComponent<Robo2Script>();
+            enemyScript.isDead = true;
         }
 
-        if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
+        if (hit.gameObject.tag == "Enemy" && !isGrounded)
         {
             moveDirection.y = jumpForce;
             enemyScript = hit.gameObject.GetComponent<Robo2Script>();
             enemyScript.isDead = true;
         }
 
-        if (hit.gameObject.CompareTag("Ground"))
+        if (hit.gameObject.tag == "Ground")
         {
             isGrounded = true;
         }
 
-        if (hit.gameObject.CompareTag("MovingPlatform"))
+        if (hit.gameObject.tag == "MovingPlatform")
         {
             isGrounded = true;
-
             transform.parent = hit.transform;
+        }
+        else
+        {
+            transform.parent = null;
+        }
+
+        if (hit.gameObject.tag == "DroppingPlatform")
+        {
+            droppingPlatform = hit.gameObject.GetComponent<DroppingPlatformScript>();
+            droppingPlatform.playerOnPlatform = true;
         }
     }
 }

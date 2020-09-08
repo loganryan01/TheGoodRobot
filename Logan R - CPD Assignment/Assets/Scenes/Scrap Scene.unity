@@ -240,11 +240,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4683777739063854, guid: 11134d1ebf2bb02409ec4c45871fc2d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.25
+      value: 7.84
       objectReference: {fileID: 0}
     - target: {fileID: 4683777739063854, guid: 11134d1ebf2bb02409ec4c45871fc2d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.03
+      value: 10.28
       objectReference: {fileID: 0}
     - target: {fileID: 4683777739063854, guid: 11134d1ebf2bb02409ec4c45871fc2d0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -312,11 +312,11 @@ GameObject:
   - component: {fileID: 849230858}
   m_Layer: 0
   m_Name: Dropping Platform
-  m_TagString: Untagged
+  m_TagString: DroppingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &849230858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeb98af2df0e044fa55e087b22467dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerOnPlatform: 0
 --- !u!65 &849230859
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -428,15 +429,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  jumpForce: 1
+  jumpForce: 4
   maximumRotation: 90
-  gravity: -9.81
+  gravity: -10
   robo3Controller: {fileID: 910283245}
   robo3CharacterController: {fileID: 0}
   enemyScript: {fileID: 0}
   turning: 0
   isAttacking: 0
   isGrounded: 0
+  onMovingPlatform: 0
 --- !u!143 &910283248
 CharacterController:
   m_ObjectHideFlags: 0
@@ -780,13 +782,14 @@ GameObject:
   - component: {fileID: 1770684329}
   - component: {fileID: 1770684328}
   - component: {fileID: 1770684332}
+  - component: {fileID: 1770684333}
   m_Layer: 0
   m_Name: Moving Platform
   m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1770684328
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -878,6 +881,22 @@ MonoBehaviour:
   zRange: 5
   xDirection: {x: 0, y: 0, z: 0}
   zDirection: {x: 0, y: 0, z: 0}
+--- !u!54 &1770684333
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770684327}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1931985842
 PrefabInstance:
   m_ObjectHideFlags: 0
