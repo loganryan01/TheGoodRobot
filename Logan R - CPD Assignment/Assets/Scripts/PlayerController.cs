@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPos;
     public Animator animator;
     public Text scoreText;
+    public Joystick joystick;
 
     public float speed = 10.0f;
     public float jumpForce;
@@ -78,54 +79,125 @@ public class PlayerController : MonoBehaviour
     // Move the player through the arrow keys and jump with the spacebar
     void MovePlayer()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        float jumpInput = Input.GetAxis("Jump");
-        float fireInput = Input.GetAxis("Fire3");
+        if (Application.isMobilePlatform)
+        {
+            // Moving Forward
+            if (joystick.Vertical >= .2f)
+            {
+                transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
 
-        if (fireInput == 1 && !isAttacking)
+                // If we are not facing forward then face forward
+                if (transform.eulerAngles.y != Vector3.zero.y && !turning)
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
+                }
+            }
+            else if (joystick.Vertical <= -.2f)
+            {
+                transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.World);
+
+                if (transform.eulerAngles.y != (maximumRotation * 2.0f) && !turning)
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation * 2.0f, 0), 1));
+                }
+            }
+            else if (joystick.Horizontal >= .2f)
+            {
+                transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+
+                if (transform.eulerAngles.y != (maximumRotation * 1.0f) && !turning)
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation * 1.0f, 0), 1));
+                }
+            }
+            else if (joystick.Horizontal <= -.2f)
+            {
+                transform.Translate(-Vector3.right * speed * Time.deltaTime, Space.World);
+
+                if (transform.eulerAngles.y != (maximumRotation * 3.0f) && !turning)
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation * 3.0f, 0), 1));
+                }
+            }
+            else
+            {
+                transform.Translate(Vector3.zero);
+            }
+        }
+        else
+        {
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            float jumpInput = Input.GetAxis("Jump");
+            float fireInput = Input.GetAxis("Fire3");
+
+            if (fireInput == 1 && !isAttacking)
+            {
+                StartCoroutine(RotatePlayerArms());
+            }
+
+            if (verticalInput > 0 && !turning)
+            {
+                if (transform.eulerAngles.y != Vector3.zero.y)
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
+                }
+            }
+            else if (verticalInput < 0 && !turning)
+            {
+                if (transform.eulerAngles.y != (maximumRotation * 2.0f))
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 2.0f), 0), 1));
+                }
+            }
+            else if (horizontalInput < 0 && !turning)
+            {
+                if (transform.eulerAngles.y != (maximumRotation * 3.0f))
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 3.0f), 0), 1));
+                }
+            }
+            else if (horizontalInput > 0 && !turning)
+            {
+                if (transform.eulerAngles.y != maximumRotation)
+                {
+                    turning = true;
+                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation, 0), 1));
+                }
+            }
+
+            // Move through translate
+            transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
+            transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
+
+            if (jumpInput == 1 && isOnGround)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+            }
+        }
+    }
+
+    // Attack function
+    public void Attack()
+    {
+        if (!isAttacking)
         {
             StartCoroutine(RotatePlayerArms());
         }
+    }
 
-        if (verticalInput > 0 && !turning)
-        {
-            if (transform.eulerAngles.y != Vector3.zero.y)
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
-            }
-        }
-        else if (verticalInput < 0 && !turning)
-        {
-            if (transform.eulerAngles.y != (maximumRotation * 2.0f))
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 2.0f), 0), 1));
-            }
-        }
-        else if (horizontalInput < 0 && !turning)
-        {
-            if (transform.eulerAngles.y != (maximumRotation * 3.0f))
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 3.0f), 0), 1));
-            }
-        }
-        else if (horizontalInput > 0 && !turning)
-        {
-            if (transform.eulerAngles.y != maximumRotation)
-            {
-                turning = true;
-                StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation, 0), 1));
-            }
-        }
-
-        // Move through translate
-        transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
-        transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
-
-        if (jumpInput == 1 && isOnGround)
+    // Jump function
+    public void Jump()
+    {
+        if (isOnGround)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
