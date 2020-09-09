@@ -54,7 +54,7 @@ public class Robo3Script : MonoBehaviour
             }
 
             Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
-            robo3CharacterController.Move(move * speed * Time.deltaTime);
+            robo3CharacterController.Move(move * speed * Time.fixedDeltaTime);
 
             if (move != Vector3.zero)
             {
@@ -66,9 +66,9 @@ public class Robo3Script : MonoBehaviour
                 velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
                 isGrounded = false;
             }
-            velocity.y += gravity * Time.deltaTime;
+            velocity.y += gravity * Time.fixedDeltaTime;
 
-            robo3CharacterController.Move(velocity * Time.deltaTime);
+            robo3CharacterController.Move(velocity * Time.fixedDeltaTime);
 
             if (fireInput == 1)
             {

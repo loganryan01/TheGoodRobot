@@ -5,74 +5,109 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody playerRb;
-    private Vector3 startPos;
     public Animator animator;
     public Text scoreText;
     public Joystick joystick;
+    public CharacterController robo3CharacterController;
+    public Robo2Script enemyScript;
+    private DroppingPlatformScript droppingPlatform;
+    private GameObject box;
+
+    //private Vector3 startPos;
+    private Vector3 velocity;
 
     public float speed = 10.0f;
-    public float jumpForce;
-    public float gravityModifier;
+    public float jumpForce = 1.0f;
+    public float gravity = -9.81f;
     public float maximumRotation = 90.0f;
     public float playerCoins = 0;
 
-    public bool isOnGround;
+    public bool isGrounded;
     public bool isAttacking;
     public bool turning = false;
-    
+    public bool onPlatform;
+    public bool touchingEnemy;
+    public bool isDead;
+    public bool touchingBox;
+
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
-        playerRb = GetComponent<Rigidbody>();
-        Physics.gravity *= gravityModifier;
+        //startPos = transform.position;
+        robo3CharacterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         MovePlayer();
         ConstraintPlayerPosition();
         scoreText.text = "Coins: " + playerCoins;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        // Touching enemy
+        if (hit.gameObject.CompareTag("Enemy"))
         {
-            isOnGround = true;
-        }
+            enemyScript = hit.gameObject.GetComponent<Robo2Script>();
 
-        // Check if player jumps on enemy or box
-        if (collision.gameObject.CompareTag("Enemy") && !isOnGround ||
-            collision.gameObject.CompareTag("Box") && !isOnGround ||
-            collision.gameObject.CompareTag("Coin"))
-        {
-            if (collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Coin"))
+            if (!enemyScript.isDead)
             {
-                playerCoins++;
+                touchingEnemy = true;
             }
-            
-            Destroy(collision.gameObject);
         }
 
-        // Check if player attacks enemy or box
-        if (collision.gameObject.CompareTag("Enemy") && isAttacking ||
-            collision.gameObject.CompareTag("Box") && isAttacking)
+        // Touching box
+        if (hit.gameObject.CompareTag("Box"))
         {
-            if (collision.gameObject.CompareTag("Box"))
+            touchingBox = true;
+            box = hit.gameObject;
+        }
+
+        // Touching coin or jumping on box
+        if (hit.gameObject.CompareTag("Box") && !isGrounded || 
+            hit.gameObject.CompareTag("Coin"))
+        {
+            playerCoins++;
+            Destroy(hit.gameObject);
+        }
+
+        // Jumping on enemy
+        if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
+        {
+            enemyScript = hit.gameObject.GetComponent<Robo2Script>();
+
+            if (!enemyScript.isDead)
             {
-                playerCoins++;
+                velocity.y = jumpForce;
             }
 
-            Destroy(collision.gameObject);
+            enemyScript.isDead = true;
         }
 
-        if (collision.gameObject.CompareTag("Enemy") && isOnGround && !isAttacking ||
-            collision.gameObject.CompareTag("Lightning"))
+        // Touching the ground
+        if (hit.gameObject.CompareTag("Ground"))
         {
-            transform.position = startPos;
+            isGrounded = true;
+        }
+
+        // Touching moving platform
+        if (hit.gameObject.CompareTag("MovingPlatform"))
+        {
+            isGrounded = true;
+            transform.parent = hit.transform;
+        }
+        else
+        {
+            transform.parent = null;
+        }
+
+        // Touching dropping platform
+        if (hit.gameObject.CompareTag("DroppingPlatform"))
+        {
+            droppingPlatform = hit.gameObject.GetComponent<DroppingPlatformScript>();
+            droppingPlatform.playerOnPlatform = true;
         }
     }
 
@@ -81,107 +116,124 @@ public class PlayerController : MonoBehaviour
     {
         if (Application.isMobilePlatform)
         {
-            // Moving Forward
-            if (joystick.Vertical >= .2f)
+            if (!isDead)
             {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime, Space.World);
-
-                // If we are not facing forward then face forward
-                if (transform.eulerAngles.y != Vector3.zero.y && !turning)
+                // Moving Forward
+                if (joystick.Vertical != 0 || joystick.Horizontal != 0)
                 {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
-                }
-            }
-            else if (joystick.Vertical <= -.2f)
-            {
-                transform.Translate(-Vector3.forward * speed * Time.deltaTime, Space.World);
+                    animator.SetBool("Run", true);
 
-                if (transform.eulerAngles.y != (maximumRotation * 2.0f) && !turning)
-                {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation * 2.0f, 0), 1));
                 }
-            }
-            else if (joystick.Horizontal >= .2f)
-            {
-                transform.Translate(Vector3.right * speed * Time.deltaTime, Space.World);
+                else
+                {
+                    animator.SetBool("Run", false);
+                }
 
-                if (transform.eulerAngles.y != (maximumRotation * 1.0f) && !turning)
-                {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation * 1.0f, 0), 1));
-                }
-            }
-            else if (joystick.Horizontal <= -.2f)
-            {
-                transform.Translate(-Vector3.right * speed * Time.deltaTime, Space.World);
+                Vector3 move = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
+                robo3CharacterController.Move(move * speed * Time.fixedDeltaTime);
 
-                if (transform.eulerAngles.y != (maximumRotation * 3.0f) && !turning)
+                if (move != Vector3.zero)
                 {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation * 3.0f, 0), 1));
+                    gameObject.transform.forward = move;
                 }
-            }
-            else
-            {
-                transform.Translate(Vector3.zero);
             }
         }
         else
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
-            float jumpInput = Input.GetAxis("Jump");
-            float fireInput = Input.GetAxis("Fire3");
-
-            if (fireInput == 1 && !isAttacking)
+            if (!isDead)
             {
-                StartCoroutine(RotatePlayerArms());
-            }
+                float horizontalInput = Input.GetAxis("Horizontal");
+                float verticalInput = Input.GetAxis("Vertical");
+                float jumpInput = Input.GetAxis("Jump");
+                float fireInput = Input.GetAxis("Fire3");
 
-            if (verticalInput > 0 && !turning)
-            {
-                if (transform.eulerAngles.y != Vector3.zero.y)
+                if (isGrounded && velocity.y < 0)
                 {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(Vector3.zero), 1));
+                    velocity.y = 0;
+                }
+
+                if (horizontalInput != 0 || verticalInput != 0)
+                {
+                    animator.SetBool("Run", true);
+                }
+                else
+                {
+                    animator.SetBool("Run", false);
+                }
+
+                Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
+                robo3CharacterController.Move(move * speed * Time.fixedDeltaTime);
+
+                if (move != Vector3.zero)
+                {
+                    gameObject.transform.forward = move;
+                }
+
+                if (fireInput == 1)
+                {
+                    Attack();
+                }
+
+                if (jumpInput == 1)
+                {
+                    Jump();
                 }
             }
-            else if (verticalInput < 0 && !turning)
+        }
+
+        if (!isDead)
+        {
+            if (isGrounded && velocity.y < 0)
             {
-                if (transform.eulerAngles.y != (maximumRotation * 2.0f))
-                {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 2.0f), 0), 1));
-                }
-            }
-            else if (horizontalInput < 0 && !turning)
-            {
-                if (transform.eulerAngles.y != (maximumRotation * 3.0f))
-                {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(0, (maximumRotation * 3.0f), 0), 1));
-                }
-            }
-            else if (horizontalInput > 0 && !turning)
-            {
-                if (transform.eulerAngles.y != maximumRotation)
-                {
-                    turning = true;
-                    StartCoroutine(LerpFunction(Quaternion.Euler(0, maximumRotation, 0), 1));
-                }
+                velocity.y = 0;
             }
 
-            // Move through translate
-            transform.Translate(Vector3.right * horizontalInput * speed * Time.deltaTime, Space.World);
-            transform.Translate(Vector3.forward * verticalInput * speed * Time.deltaTime, Space.World);
+            velocity.y += gravity * Time.fixedDeltaTime;
 
-            if (jumpInput == 1 && isOnGround)
+            robo3CharacterController.Move(velocity * Time.fixedDeltaTime);
+
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
-                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                isOnGround = false;
+                isAttacking = true;
             }
+            else if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                isAttacking = false;
+            }
+
+            // Collision Check
+            // Attacking enemy
+            if (touchingEnemy && isAttacking)
+            {
+                enemyScript.isDead = true;
+                enemyScript = null;
+                touchingEnemy = false;
+            }
+            // Killed by enemy
+            else if (touchingEnemy && !isAttacking && isGrounded && !isDead)
+            {
+                isDead = true;
+            }
+
+            // Attacking box
+            if (touchingBox && isAttacking)
+            {
+                playerCoins++;
+                Destroy(box);
+                touchingBox = false;
+            }
+
+            // Touching nothing
+            if (robo3CharacterController.collisionFlags == CollisionFlags.None)
+            {
+                isGrounded = false;
+                transform.parent = null;
+            }
+        }
+
+        if (isDead)
+        {
+            animator.SetBool("Dead", true);
         }
     }
 
@@ -190,17 +242,17 @@ public class PlayerController : MonoBehaviour
     {
         if (!isAttacking)
         {
-            StartCoroutine(RotatePlayerArms());
+            animator.Play("Attack");
         }
     }
 
     // Jump function
     public void Jump()
     {
-        if (isOnGround)
+        if (isGrounded)
         {
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            isOnGround = false;
+            velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
+            isGrounded = false;
         }
     }
 
@@ -211,30 +263,5 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
         }
-    }
-
-    IEnumerator RotatePlayerArms()
-    {
-        isAttacking = true;
-        animator.Play("Attack_Start");
-
-        yield return new WaitForSeconds(1.0f);
-
-        isAttacking = false;
-    }
-
-    IEnumerator LerpFunction(Quaternion endValue, float duration)
-    {
-        float time = 0;
-        Quaternion startValue = transform.rotation;
-
-        while (time < duration)
-        {
-            transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        transform.rotation = endValue;
-        turning = false;
     }
 }
