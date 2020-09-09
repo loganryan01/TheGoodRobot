@@ -14,7 +14,6 @@ public class Robo3Script : MonoBehaviour
     public Robo2Script enemyScript;
     private DroppingPlatformScript droppingPlatform;
 
-    private Vector3 moveDirection;
     private Vector3 velocity;
 
     public bool turning = false;
@@ -31,9 +30,6 @@ public class Robo3Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //  || onPlatform && velocity.y < 0
-
-
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
         float jumpInput = Input.GetAxis("Jump");
@@ -66,11 +62,6 @@ public class Robo3Script : MonoBehaviour
             velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
             isGrounded = false;
         }
-        //else if (onPlatform && jumpInput == 1)
-        //{
-        //    velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
-        //    onPlatform = false;
-        //}
         velocity.y += gravity * Time.deltaTime;
 
         robo3CharacterController.Move(velocity * Time.deltaTime);
@@ -96,6 +87,8 @@ public class Robo3Script : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        Debug.Log(hit.gameObject.tag);
+        
         if (hit.gameObject.tag == "Enemy" && isAttacking)
         {
             enemyScript = hit.gameObject.GetComponent<Robo2Script>();
@@ -104,8 +97,13 @@ public class Robo3Script : MonoBehaviour
 
         if (hit.gameObject.tag == "Enemy" && !isGrounded)
         {
-            moveDirection.y = jumpForce;
             enemyScript = hit.gameObject.GetComponent<Robo2Script>();
+            
+            if (!enemyScript.isDead)
+            {
+                velocity.y = jumpForce;
+            }
+
             enemyScript.isDead = true;
         }
 
