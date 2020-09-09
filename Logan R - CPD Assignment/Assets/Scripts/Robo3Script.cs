@@ -20,6 +20,8 @@ public class Robo3Script : MonoBehaviour
     public bool isAttacking;
     public bool isGrounded;
     public bool onPlatform;
+    public bool touchingEnemy;
+    public bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -30,72 +32,92 @@ public class Robo3Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-        float jumpInput = Input.GetAxis("Jump");
-        float fireInput = Input.GetAxis("Fire3");
-
-        if (isGrounded && velocity.y < 0)
+        if (!isDead)
         {
-            velocity.y = 0;
-        }
+            float horizontalInput = Input.GetAxis("Horizontal");
+            float verticalInput = Input.GetAxis("Vertical");
+            float jumpInput = Input.GetAxis("Jump");
+            float fireInput = Input.GetAxis("Fire3");
 
-        if (horizontalInput != 0 || verticalInput != 0)
-        {
-            robo3Controller.SetBool("Run", true);
-        }
-        else
-        {
-            robo3Controller.SetBool("Run", false);
-        }
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = 0;
+            }
 
-        Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
-        robo3CharacterController.Move(move * speed * Time.deltaTime);
+            if (horizontalInput != 0 || verticalInput != 0)
+            {
+                robo3Controller.SetBool("Run", true);
+            }
+            else
+            {
+                robo3Controller.SetBool("Run", false);
+            }
 
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
-        }
+            Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
+            robo3CharacterController.Move(move * speed * Time.deltaTime);
 
-        if (isGrounded && jumpInput == 1)
-        {
-            velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
-            isGrounded = false;
-        }
-        velocity.y += gravity * Time.deltaTime;
+            if (move != Vector3.zero)
+            {
+                gameObject.transform.forward = move;
+            }
 
-        robo3CharacterController.Move(velocity * Time.deltaTime);
+            if (isGrounded && jumpInput == 1)
+            {
+                velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
+                isGrounded = false;
+            }
+            velocity.y += gravity * Time.deltaTime;
 
-        if (fireInput == 1)
-        {
-            robo3Controller.SetBool("Attack", true);
-            isAttacking = true;
-        }
+            robo3CharacterController.Move(velocity * Time.deltaTime);
 
-        if (robo3Controller.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
-        {
-            robo3Controller.SetBool("Attack", false);
-            isAttacking = false;
-        }
+            if (fireInput == 1)
+            {
+                robo3Controller.Play("Attack");
+            }
 
-        if (robo3CharacterController.collisionFlags == CollisionFlags.None)
-        {
-            isGrounded = false;
-            transform.parent = null;
+            // If the attack animation is playing then the player is attacking
+            if (robo3Controller.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                isAttacking = true;
+            }
+            else if (!robo3Controller.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+            {
+                isAttacking = false;
+            }
+
+            if (touchingEnemy && isAttacking)
+            {
+                enemyScript.isDead = true;
+                enemyScript = null;
+                touchingEnemy = false;
+            }
+            else if (touchingEnemy && !isAttacking && isGrounded && !isDead)
+            {
+                robo3Controller.SetBool("Dead", true);
+                isDead = true;
+            }
+
+            if (robo3CharacterController.collisionFlags == CollisionFlags.None)
+            {
+                isGrounded = false;
+                transform.parent = null;
+            }
         }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        Debug.Log(hit.gameObject.tag);
-        
-        if (hit.gameObject.tag == "Enemy" && isAttacking)
+        if (hit.gameObject.CompareTag("Enemy"))
         {
             enemyScript = hit.gameObject.GetComponent<Robo2Script>();
-            enemyScript.isDead = true;
+
+            if (!enemyScript.isDead)
+            {
+                touchingEnemy = true;
+            }
         }
 
-        if (hit.gameObject.tag == "Enemy" && !isGrounded)
+        if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
         {
             enemyScript = hit.gameObject.GetComponent<Robo2Script>();
             
