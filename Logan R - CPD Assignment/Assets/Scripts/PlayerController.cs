@@ -47,30 +47,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+
         // Touching enemy
         if (hit.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Touching Enemy");
             enemyScript = hit.gameObject.GetComponent<Robo2Script>();
 
             if (!enemyScript.isDead)
             {
                 touchingEnemy = true;
             }
-        }
-
-        // Touching box
-        if (hit.gameObject.CompareTag("Box"))
-        {
-            touchingBox = true;
-            box = hit.gameObject;
-        }
-
-        // Touching coin or jumping on box
-        if (hit.gameObject.CompareTag("Box") && !isGrounded || 
-            hit.gameObject.CompareTag("Coin"))
-        {
-            playerCoins++;
-            Destroy(hit.gameObject);
         }
 
         // Jumping on enemy
@@ -84,6 +71,30 @@ public class PlayerController : MonoBehaviour
             }
 
             enemyScript.isDead = true;
+            touchingEnemy = false;
+        }
+
+        // Touching box
+        if (hit.gameObject.CompareTag("Box"))
+        {
+            touchingBox = true;
+            box = hit.gameObject;
+        }
+
+        // Jumping on box
+        if (hit.gameObject.CompareTag("Box") && !isGrounded)
+        {
+            playerCoins++;
+            Destroy(hit.gameObject);
+            velocity.y = jumpForce;
+            touchingBox = false;
+        }
+
+        // Touching coin
+        if (hit.gameObject.CompareTag("Coin"))
+        {
+            playerCoins++;
+            Destroy(hit.gameObject);
         }
 
         // Touching the ground
