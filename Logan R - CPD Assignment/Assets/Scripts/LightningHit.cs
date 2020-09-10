@@ -8,9 +8,12 @@ public class LightningHit : MonoBehaviour
 
     private void OnParticleCollision(GameObject other)
     {
-        if (other.name == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
-            player.GetComponent<PlayerController>().isDead = true;
+            if (!player.GetComponent<PlayerController>().isDead)
+            {
+                player.GetComponent<PlayerController>().isDead = true;
+            }
         }
     }
 }

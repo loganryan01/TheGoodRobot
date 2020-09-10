@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public Text scoreText;
     public Joystick joystick;
     public CharacterController robo3CharacterController;
-    public Robo2Script enemyScript;
+    public EnemyScript enemyScript;
     private DroppingPlatformScript droppingPlatform;
     private GameObject box;
 
@@ -45,14 +45,55 @@ public class PlayerController : MonoBehaviour
         scoreText.text = "Coins: " + playerCoins;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        // ----- Ground Collision -----
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+
+        // ----- Coin Collision -----
+        // Touching coin
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            playerCoins++;
+            Destroy(other.gameObject);
+        }
+
+        // ----- Box Collision -----
+        // Jumping on box
+        if (other.gameObject.CompareTag("Box") && !isGrounded)
+        {
+            playerCoins++;
+            Destroy(other.gameObject);
+            velocity.y = jumpForce;
+        }
+
+        // ----- Lightning Collision -----
+        if (other.gameObject.CompareTag("Lightning"))
+        {
+            isDead = true;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Box") && isAttacking)
+        {
+            playerCoins++;
+            Destroy(other.gameObject);
+            touchingBox = false;
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-
+        // ----- Enemy Collision -----
         // Touching enemy
         if (hit.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Touching Enemy");
-            enemyScript = hit.gameObject.GetComponent<Robo2Script>();
+            enemyScript = hit.gameObject.GetComponent<EnemyScript>();
 
             if (!enemyScript.isDead)
             {
@@ -63,7 +104,7 @@ public class PlayerController : MonoBehaviour
         // Jumping on enemy
         if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
         {
-            enemyScript = hit.gameObject.GetComponent<Robo2Script>();
+            enemyScript = hit.gameObject.GetComponent<EnemyScript>();
 
             if (!enemyScript.isDead)
             {
@@ -74,52 +115,25 @@ public class PlayerController : MonoBehaviour
             touchingEnemy = false;
         }
 
-        // Touching box
-        if (hit.gameObject.CompareTag("Box"))
-        {
-            touchingBox = true;
-            box = hit.gameObject;
-        }
+        //// ----- Moving Platform Collision -----
+        //// Touching moving platform
+        //if (other.gameObject.CompareTag("MovingPlatform"))
+        //{
+        //    isGrounded = true;
+        //    transform.parent = hit.transform;
+        //}
+        //else
+        //{
+        //    transform.parent = null;
+        //}
 
-        // Jumping on box
-        if (hit.gameObject.CompareTag("Box") && !isGrounded)
-        {
-            playerCoins++;
-            Destroy(hit.gameObject);
-            velocity.y = jumpForce;
-            touchingBox = false;
-        }
-
-        // Touching coin
-        if (hit.gameObject.CompareTag("Coin"))
-        {
-            playerCoins++;
-            Destroy(hit.gameObject);
-        }
-
-        // Touching the ground
-        if (hit.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-
-        // Touching moving platform
-        if (hit.gameObject.CompareTag("MovingPlatform"))
-        {
-            isGrounded = true;
-            transform.parent = hit.transform;
-        }
-        else
-        {
-            transform.parent = null;
-        }
-
-        // Touching dropping platform
-        if (hit.gameObject.CompareTag("DroppingPlatform"))
-        {
-            droppingPlatform = hit.gameObject.GetComponent<DroppingPlatformScript>();
-            droppingPlatform.playerOnPlatform = true;
-        }
+        //// ----- Dropping Platform Collision -----
+        //// Touching dropping platform
+        //if (hit.gameObject.CompareTag("DroppingPlatform"))
+        //{
+        //    droppingPlatform = hit.gameObject.GetComponent<DroppingPlatformScript>();
+        //    droppingPlatform.playerOnPlatform = true;
+        //}
     }
 
     // Move the player through the arrow keys and jump with the spacebar
@@ -199,7 +213,10 @@ public class PlayerController : MonoBehaviour
                 velocity.y = 0;
             }
 
-            velocity.y += gravity * Time.fixedDeltaTime;
+            if (!isGrounded)
+            {
+                velocity.y += gravity * Time.fixedDeltaTime;
+            }
 
             robo3CharacterController.Move(velocity * Time.fixedDeltaTime);
 
@@ -212,7 +229,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = false;
             }
 
-            // Collision Check
+            // ----- Collision Check -----
             // Attacking enemy
             if (touchingEnemy && isAttacking)
             {
@@ -220,26 +237,21 @@ public class PlayerController : MonoBehaviour
                 enemyScript = null;
                 touchingEnemy = false;
             }
-            // Killed by enemy
-            else if (touchingEnemy && !isAttacking && isGrounded && !isDead)
-            {
-                isDead = true;
-            }
 
             // Attacking box
-            if (touchingBox && isAttacking)
-            {
-                playerCoins++;
-                Destroy(box);
-                touchingBox = false;
-            }
+            //if (touchingBox && isAttacking)
+            //{
+            //    playerCoins++;
+            //    Destroy(box);
+            //    touchingBox = false;
+            //}
 
             // Touching nothing
-            if (robo3CharacterController.collisionFlags == CollisionFlags.None)
-            {
-                isGrounded = false;
-                transform.parent = null;
-            }
+            //if (robo3CharacterController.collisionFlags == CollisionFlags.None)
+            //{
+            //    isGrounded = false;
+            //    transform.parent = null;
+            //}
         }
 
         if (isDead)

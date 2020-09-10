@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LightningScript : MonoBehaviour
 {
-    public ParticleSystem lightningParticles;
+    public ParticleSystem[] lightningParticles;
 
     private float timer = 0;
     private float waitTime = 3;
@@ -16,15 +16,23 @@ public class LightningScript : MonoBehaviour
 
         if (timer >= waitTime)
         {
-            StartCoroutine(ShootLightning());
+            for (int i = 0; i < 2; i++)
+            {
+                StartCoroutine(ShootLightning(i));
+            }
+            GetComponent<BoxCollider>().enabled = false;
+        }
+        else
+        {
+            GetComponent<BoxCollider>().enabled = true;
         }
     }
 
-    IEnumerator ShootLightning()
+    IEnumerator ShootLightning(int index)
     {
-        lightningParticles.gameObject.SetActive(false);
+        lightningParticles[index].gameObject.SetActive(false);
         yield return new WaitForSeconds(waitTime);
-        lightningParticles.gameObject.SetActive(true);
+        lightningParticles[index].gameObject.SetActive(true);
         timer = 0;
     }
 }

@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 3415511230174978110}
   - component: {fileID: 3325340096341988962}
   - component: {fileID: 3420192000289915731}
-  - component: {fileID: 3420192000289915724}
+  - component: {fileID: 1429242965}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -96,14 +96,14 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2.46
+  m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1.64, z: 0}
---- !u!114 &3420192000289915724
+  m_Center: {x: 0, y: 1.6, z: 0}
+--- !u!114 &1429242965
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,20 +112,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 3418291090551694040}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abba29dce7b0dbf46b97b0c214eb597e, type: 3}
+  m_Script: {fileID: 11500000, guid: 67fafdaa4880aba43b3c2a579d1f2023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  jumpForce: 4
-  maximumRotation: 90
-  gravity: -10
-  robo3Controller: {fileID: 3325340096341988962}
+  animator: {fileID: 3325340096341988962}
+  scoreText: {fileID: 0}
+  joystick: {fileID: 0}
   robo3CharacterController: {fileID: 0}
   enemyScript: {fileID: 0}
-  turning: 0
-  isAttacking: 0
+  speed: 10
+  jumpForce: 3
+  gravity: -10
+  maximumRotation: 90
+  playerCoins: 0
   isGrounded: 0
+  isAttacking: 0
+  turning: 0
   onPlatform: 0
+  touchingEnemy: 0
+  isDead: 0
+  touchingBox: 0
 --- !u!1 &3418309978743661596
 GameObject:
   m_ObjectHideFlags: 0
