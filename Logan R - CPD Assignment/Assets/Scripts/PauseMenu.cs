@@ -15,10 +15,10 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //float pauseButton = Input.GetAxis("Cancel");
-        EventSystem.current.SetSelectedGameObject(startButton);
-
+        Debug.Log(EventSystem.current.currentSelectedGameObject);
         if (Input.GetButtonDown("Cancel"))
         {
+            
             if (GameIsPaused)
             {
                 Resume();
@@ -32,6 +32,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
+        EventSystem.current.SetSelectedGameObject(null);
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -39,6 +40,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(startButton);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

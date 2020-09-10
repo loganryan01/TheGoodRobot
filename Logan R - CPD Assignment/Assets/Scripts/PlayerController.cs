@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -74,6 +75,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Lightning"))
         {
             isDead = true;
+        }
+
+        // ----- Finish Collision -----
+        if (other.gameObject.CompareTag("Finish"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
@@ -237,14 +244,10 @@ public class PlayerController : MonoBehaviour
                 enemyScript = null;
                 touchingEnemy = false;
             }
-
-            // Attacking box
-            //if (touchingBox && isAttacking)
-            //{
-            //    playerCoins++;
-            //    Destroy(box);
-            //    touchingBox = false;
-            //}
+            else if (touchingEnemy && !enemyScript.isDead)
+            {
+                isDead = true;
+            }
 
             // Touching nothing
             //if (robo3CharacterController.collisionFlags == CollisionFlags.None)
