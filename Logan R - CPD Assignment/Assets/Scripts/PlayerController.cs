@@ -277,6 +277,11 @@ public class PlayerController : MonoBehaviour
                 isDead = true;
             }
 
+            if (transform.position.y < -5)
+            {
+                isDead = true;
+            }
+
         }
 
         if (isDead)
