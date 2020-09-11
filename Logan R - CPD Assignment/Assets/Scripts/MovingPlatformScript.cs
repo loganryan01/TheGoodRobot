@@ -37,7 +37,7 @@ public class MovingPlatformScript : MonoBehaviour
                 xDirection = Vector3.right;
             }
 
-            transform.Translate(xDirection * speed * Time.deltaTime);
+            transform.Translate(xDirection * speed * Time.fixedDeltaTime);
         }
 
         if (zRange != 0)
@@ -56,7 +56,7 @@ public class MovingPlatformScript : MonoBehaviour
                 zDirection = Vector3.forward;
             }
 
-            transform.Translate(zDirection * speed * Time.deltaTime);
+            transform.Translate(zDirection * speed * Time.fixedDeltaTime);
         }
     }
 }

@@ -2460,14 +2460,6 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1368277902}
-    - target: {fileID: 1429242965, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
-      propertyPath: isDead
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429242965, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
-      propertyPath: jumpForce
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3415511230174978110, guid: 715e5c6c54417b641926661bb43e9fed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2527,21 +2519,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420192000289915731, guid: 715e5c6c54417b641926661bb43e9fed,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420192000289915731, guid: 715e5c6c54417b641926661bb43e9fed,
-        type: 3}
-      propertyPath: m_SlopeLimit
-      value: 45
-      objectReference: {fileID: 0}
-    - target: {fileID: 3420192000289915731, guid: 715e5c6c54417b641926661bb43e9fed,
-        type: 3}
-      propertyPath: m_StepOffset
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}

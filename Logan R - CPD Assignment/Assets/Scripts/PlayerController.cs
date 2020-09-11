@@ -69,6 +69,14 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
+
+        // ----- Moving Platform Collision -----
+        // Touching moving platform
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            isGrounded = true;
+            transform.parent = other.transform;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -93,6 +101,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+        }
+
+        if (other.gameObject.CompareTag("MovingPlatform"))
+        {
+            isGrounded = false;
+            transform.parent = null;
         }
     }
 
@@ -132,18 +146,6 @@ public class PlayerController : MonoBehaviour
             Destroy(hit.gameObject);
             velocity.y += 10.0f;
         }
-
-        //// ----- Moving Platform Collision -----
-        //// Touching moving platform
-        //if (other.gameObject.CompareTag("MovingPlatform"))
-        //{
-        //    isGrounded = true;
-        //    transform.parent = hit.transform;
-        //}
-        //else
-        //{
-        //    transform.parent = null;
-        //}
 
         //// ----- Dropping Platform Collision -----
         //// Touching dropping platform
