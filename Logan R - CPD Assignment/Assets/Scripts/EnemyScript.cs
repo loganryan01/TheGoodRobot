@@ -55,7 +55,6 @@ public class EnemyScript : MonoBehaviour
                 robo2Animator.SetBool("AtEdge", true);
                 StartCoroutine(LerpFunction(Quaternion.Euler(0, faceRight, 0), 1.0f));
 
-
                 if (transform.eulerAngles.y == faceRight)
                 {
                     robo2Animator.SetBool("AtEdge", false);
@@ -63,6 +62,8 @@ public class EnemyScript : MonoBehaviour
                 }
             }
         }
+
+        transform.position = new Vector3(transform.position.x, 0, 19);
     }
 
     public void OnDestroy()

@@ -333,8 +333,8 @@ GameObject:
   - component: {fileID: 184267670}
   - component: {fileID: 184267669}
   - component: {fileID: 184267668}
-  - component: {fileID: 184267672}
   - component: {fileID: 184267673}
+  - component: {fileID: 184267672}
   m_Layer: 0
   m_Name: Box
   m_TagString: Box
@@ -353,7 +353,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2, z: 2}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &184267669
 MeshRenderer:
@@ -2464,6 +2464,10 @@ PrefabInstance:
       propertyPath: isDead
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1429242965, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
+      propertyPath: jumpForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3415511230174978110, guid: 715e5c6c54417b641926661bb43e9fed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2528,6 +2532,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420192000289915731, guid: 715e5c6c54417b641926661bb43e9fed,
+        type: 3}
+      propertyPath: m_SlopeLimit
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420192000289915731, guid: 715e5c6c54417b641926661bb43e9fed,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
@@ -4295,6 +4309,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1429242964}
+    - target: {fileID: 5701326999731319173, guid: 33f21592b234c65488da7f04c9e07c82,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6617566308026882566, guid: 33f21592b234c65488da7f04c9e07c82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4354,6 +4373,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Electric Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 7677416545778683106, guid: 33f21592b234c65488da7f04c9e07c82,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 18.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9098871660858749849, guid: 33f21592b234c65488da7f04c9e07c82,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1929608061, guid: 33f21592b234c65488da7f04c9e07c82, type: 3}

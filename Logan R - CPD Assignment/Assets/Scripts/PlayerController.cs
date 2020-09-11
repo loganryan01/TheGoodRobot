@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     public bool touchingEnemy;
     public bool isDead;
     public bool touchingBox;
+    public bool falling;
+    public bool jumping;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         MovePlayer();
         ConstraintPlayerPosition();
@@ -48,27 +50,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // ----- Ground Collision -----
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-
         // ----- Coin Collision -----
         // Touching coin
         if (other.gameObject.CompareTag("Coin"))
         {
             playerCoins++;
             Destroy(other.gameObject);
-        }
-
-        // ----- Box Collision -----
-        // Jumping on box
-        if (other.gameObject.CompareTag("Box") && !isGrounded)
-        {
-            playerCoins++;
-            Destroy(other.gameObject);
-            velocity.y = jumpForce;
         }
 
         // ----- Lightning Collision -----
@@ -86,11 +73,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        // ----- Ground Collision -----
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+        }
+
+        // ----- Box Collision -----
         if (other.gameObject.CompareTag("Box") && isAttacking)
         {
             playerCoins++;
             Destroy(other.gameObject);
-            touchingBox = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // ----- Ground Collision -----
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
         }
     }
 
@@ -120,6 +122,15 @@ public class PlayerController : MonoBehaviour
 
             enemyScript.isDead = true;
             touchingEnemy = false;
+        }
+
+        // ----- Box Collision -----
+        // Jumping on box
+        if (hit.gameObject.CompareTag("Box") && falling)
+        {
+            playerCoins++;
+            Destroy(hit.gameObject);
+            velocity.y += 10.0f;
         }
 
         //// ----- Moving Platform Collision -----
@@ -162,9 +173,9 @@ public class PlayerController : MonoBehaviour
                 }
 
                 Vector3 move = new Vector3(joystick.Horizontal, 0, joystick.Vertical);
-                robo3CharacterController.Move(move * speed * Time.fixedDeltaTime);
+                robo3CharacterController.Move(move * speed * Time.deltaTime);
 
-                if (move != Vector3.zero)
+                if (move != Vector3.zero && Time.timeScale != 0.0f)
                 {
                     gameObject.transform.forward = move;
                 }
@@ -179,11 +190,6 @@ public class PlayerController : MonoBehaviour
                 float jumpInput = Input.GetAxis("Jump");
                 float fireInput = Input.GetAxis("Fire3");
 
-                if (isGrounded && velocity.y < 0)
-                {
-                    velocity.y = 0;
-                }
-
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
                     animator.SetBool("Run", true);
@@ -194,9 +200,9 @@ public class PlayerController : MonoBehaviour
                 }
 
                 Vector3 move = new Vector3(horizontalInput, 0, verticalInput);
-                robo3CharacterController.Move(move * speed * Time.fixedDeltaTime);
+                robo3CharacterController.Move(move * speed * Time.deltaTime);
 
-                if (move != Vector3.zero)
+                if (move != Vector3.zero && Time.timeScale != 0.0f)
                 {
                     gameObject.transform.forward = move;
                 }
@@ -206,7 +212,7 @@ public class PlayerController : MonoBehaviour
                     Attack();
                 }
 
-                if (jumpInput == 1)
+                if (Input.GetButtonDown("Jump"))
                 {
                     Jump();
                 }
@@ -215,17 +221,23 @@ public class PlayerController : MonoBehaviour
 
         if (!isDead)
         {
+            velocity.y += gravity * Time.deltaTime;
+            
             if (isGrounded && velocity.y < 0)
             {
                 velocity.y = 0;
             }
 
-            if (!isGrounded)
+            if (!isGrounded && velocity.y < 0)
             {
-                velocity.y += gravity * Time.fixedDeltaTime;
+                falling = true;
+            }
+            else
+            {
+                falling = false;
             }
 
-            robo3CharacterController.Move(velocity * Time.fixedDeltaTime);
+            robo3CharacterController.Move(velocity * Time.deltaTime);
 
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
@@ -249,12 +261,6 @@ public class PlayerController : MonoBehaviour
                 isDead = true;
             }
 
-            // Touching nothing
-            //if (robo3CharacterController.collisionFlags == CollisionFlags.None)
-            //{
-            //    isGrounded = false;
-            //    transform.parent = null;
-            //}
         }
 
         if (isDead)

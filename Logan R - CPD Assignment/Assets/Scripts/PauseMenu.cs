@@ -14,11 +14,8 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //float pauseButton = Input.GetAxis("Cancel");
-        Debug.Log(EventSystem.current.currentSelectedGameObject);
         if (Input.GetButtonDown("Cancel"))
         {
-            
             if (GameIsPaused)
             {
                 Resume();
