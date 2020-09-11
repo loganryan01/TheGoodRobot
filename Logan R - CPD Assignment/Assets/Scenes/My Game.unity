@@ -1443,6 +1443,7 @@ GameObject:
   - component: {fileID: 517875898}
   - component: {fileID: 517875897}
   - component: {fileID: 517875896}
+  - component: {fileID: 517875900}
   m_Layer: 0
   m_Name: Teleporter (1)
   m_TagString: Respawn
@@ -1458,7 +1459,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517875895}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 4.000001
@@ -1525,6 +1526,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &517875900
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517875895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &559005815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1924825533}
-  startButton: {fileID: 0}
+  startButton: {fileID: 1243123251}
 --- !u!114 &763707798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2442,6 +2456,10 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1368277902}
+    - target: {fileID: 1429242965, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
+      propertyPath: jumpForce
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3415511230174978110, guid: 715e5c6c54417b641926661bb43e9fed,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3835,7 +3853,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.7999878, y: -1.699997}
+  m_AnchoredPosition: {x: 0.7999878, y: -1.7000122}
   m_SizeDelta: {x: 57.6, y: 45.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1841154840
@@ -4005,7 +4023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.7999878, y: -1.699997}
+  m_AnchoredPosition: {x: 0.7999878, y: -1.7000122}
   m_SizeDelta: {x: 57.6, y: 45.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1924825535

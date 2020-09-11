@@ -31,6 +31,7 @@ public class EnemyScript : MonoBehaviour
         if (isDead)
         {
             StartCoroutine(PlayDead());
+            robo2Controller.enabled = false;
         }
         else
         {

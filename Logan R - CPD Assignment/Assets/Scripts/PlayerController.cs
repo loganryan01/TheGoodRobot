@@ -61,6 +61,11 @@ public class PlayerController : MonoBehaviour
             isDead = true;
         }
 
+        if (other.gameObject.CompareTag("Respawn"))
+        {
+            isGrounded = true;
+        }
+
         // ----- Finish Collision -----
         if (other.gameObject.CompareTag("Finish"))
         {
@@ -103,6 +108,11 @@ public class PlayerController : MonoBehaviour
     {
         // ----- Ground Collision -----
         if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = false;
+        }
+
+        if (other.gameObject.CompareTag("Respawn"))
         {
             isGrounded = false;
         }
