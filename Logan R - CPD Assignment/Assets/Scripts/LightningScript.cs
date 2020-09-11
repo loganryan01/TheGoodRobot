@@ -16,7 +16,7 @@ public class LightningScript : MonoBehaviour
 
         if (timer >= waitTime)
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < lightningParticles.Length; i++)
             {
                 StartCoroutine(ShootLightning(i));
             }

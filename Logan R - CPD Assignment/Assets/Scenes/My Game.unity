@@ -2138,6 +2138,12 @@ MonoBehaviour:
   gameOverUI: {fileID: 1832872257}
   player: {fileID: 1429242964}
   startButton: {fileID: 256645634}
+--- !u!198 &767034374 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6663826783546623735, guid: 33f21592b234c65488da7f04c9e07c82,
+    type: 3}
+  m_PrefabInstance: {fileID: 6617566308304160830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &804808298
 GameObject:
   m_ObjectHideFlags: 0
@@ -2498,6 +2504,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
+--- !u!198 &1026055891 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5983245931063328872, guid: 33f21592b234c65488da7f04c9e07c82,
+    type: 3}
+  m_PrefabInstance: {fileID: 6617566308304160830}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1026463051 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 662992397309650500, guid: 33f21592b234c65488da7f04c9e07c82,
+    type: 3}
+  m_PrefabInstance: {fileID: 6617566308304160830}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1217990093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4480,6 +4498,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1918343812, guid: 33f21592b234c65488da7f04c9e07c82, type: 3}
+      propertyPath: lightningParticles.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918343812, guid: 33f21592b234c65488da7f04c9e07c82, type: 3}
+      propertyPath: lightningParticles.Array.data[2]
+      value: 
+      objectReference: {fileID: 1026055891}
+    - target: {fileID: 1918343812, guid: 33f21592b234c65488da7f04c9e07c82, type: 3}
+      propertyPath: lightningParticles.Array.data[3]
+      value: 
+      objectReference: {fileID: 767034374}
+    - target: {fileID: 1918343812, guid: 33f21592b234c65488da7f04c9e07c82, type: 3}
+      propertyPath: lightningParticles.Array.data[1]
+      value: 
+      objectReference: {fileID: 1026463051}
     - target: {fileID: 1929608061, guid: 33f21592b234c65488da7f04c9e07c82, type: 3}
       propertyPath: player
       value: 
