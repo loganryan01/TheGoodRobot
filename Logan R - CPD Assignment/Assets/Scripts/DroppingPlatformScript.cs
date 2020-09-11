@@ -6,12 +6,6 @@ public class DroppingPlatformScript : MonoBehaviour
 {
     public bool playerOnPlatform;
     private bool drop;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +25,7 @@ public class DroppingPlatformScript : MonoBehaviour
     {
         playerOnPlatform = false;
         // Wait 5 seconds then drop
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1.5f);
         drop = true;
     }
 }

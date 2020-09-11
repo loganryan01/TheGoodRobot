@@ -12,12 +12,6 @@ public class MovingPlatformScript : MonoBehaviour
     public Vector3 xDirection = Vector3.zero;
     public Vector3 zDirection = Vector3.zero;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {

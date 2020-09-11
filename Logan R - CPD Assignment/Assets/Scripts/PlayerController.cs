@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour
     public CharacterController robo3CharacterController;
     public EnemyScript enemyScript;
     private DroppingPlatformScript droppingPlatform;
-    private GameObject box;
 
-    //private Vector3 startPos;
     private Vector3 velocity;
 
     public float speed = 10.0f;
@@ -36,7 +34,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //startPos = transform.position;
         robo3CharacterController = GetComponent<CharacterController>();
     }
 
@@ -71,11 +68,18 @@ public class PlayerController : MonoBehaviour
         }
 
         // ----- Moving Platform Collision -----
-        // Touching moving platform
         if (other.gameObject.CompareTag("MovingPlatform"))
         {
             isGrounded = true;
             transform.parent = other.transform;
+        }
+
+        // ----- Dropping Platform Collision -----
+        if (other.gameObject.CompareTag("DroppingPlatform"))
+        {
+            isGrounded = true;
+            droppingPlatform = other.gameObject.GetComponent<DroppingPlatformScript>();
+            droppingPlatform.playerOnPlatform = true;
         }
     }
 
@@ -103,10 +107,18 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
+        // ----- Moving Platform Collision -----
         if (other.gameObject.CompareTag("MovingPlatform"))
         {
             isGrounded = false;
             transform.parent = null;
+        }
+
+        // ----- Dropping Platform Collision -----
+        if (other.gameObject.CompareTag("DroppingPlatform"))
+        {
+            isGrounded = false;
+            droppingPlatform = null;
         }
     }
 
@@ -146,14 +158,6 @@ public class PlayerController : MonoBehaviour
             Destroy(hit.gameObject);
             velocity.y += 10.0f;
         }
-
-        //// ----- Dropping Platform Collision -----
-        //// Touching dropping platform
-        //if (hit.gameObject.CompareTag("DroppingPlatform"))
-        //{
-        //    droppingPlatform = hit.gameObject.GetComponent<DroppingPlatformScript>();
-        //    droppingPlatform.playerOnPlatform = true;
-        //}
     }
 
     // Move the player through the arrow keys and jump with the spacebar
@@ -189,8 +193,8 @@ public class PlayerController : MonoBehaviour
             {
                 float horizontalInput = Input.GetAxis("Horizontal");
                 float verticalInput = Input.GetAxis("Vertical");
-                float jumpInput = Input.GetAxis("Jump");
-                float fireInput = Input.GetAxis("Fire3");
+                string jumpAxis = "Jump";
+                string fireAxis = "Fire3";
 
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
@@ -209,12 +213,12 @@ public class PlayerController : MonoBehaviour
                     gameObject.transform.forward = move;
                 }
 
-                if (fireInput == 1)
+                if (Input.GetButtonDown(fireAxis))
                 {
                     Attack();
                 }
 
-                if (Input.GetButtonDown("Jump"))
+                if (Input.GetButtonDown(jumpAxis))
                 {
                     Jump();
                 }
