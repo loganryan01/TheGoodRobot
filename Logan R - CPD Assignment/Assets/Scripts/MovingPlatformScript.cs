@@ -11,6 +11,12 @@ public class MovingPlatformScript : MonoBehaviour
 
     public Vector3 xDirection = Vector3.zero;
     public Vector3 zDirection = Vector3.zero;
+    private Vector3 startPos;
+
+    private void Start()
+    {
+        startPos = transform.position;
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -22,11 +28,11 @@ public class MovingPlatformScript : MonoBehaviour
                 xDirection = Vector3.right;
             }
             
-            if (transform.position.x > xRange)
+            if (transform.position.x > (startPos.x + xRange))
             {
                 xDirection = -Vector3.right;
             }
-            else if (transform.position.x < -xRange)
+            else if (transform.position.x < (startPos.x - xRange))
             {
                 xDirection = Vector3.right;
             }
@@ -41,11 +47,11 @@ public class MovingPlatformScript : MonoBehaviour
                 zDirection = Vector3.forward;
             }
 
-            if (transform.position.z > zRange)
+            if (transform.position.z > (startPos.z + zRange))
             {
                 zDirection = -Vector3.forward;
             }
-            else if (transform.position.z < -zRange)
+            else if (transform.position.z < (startPos.z - zRange))
             {
                 zDirection = Vector3.forward;
             }
