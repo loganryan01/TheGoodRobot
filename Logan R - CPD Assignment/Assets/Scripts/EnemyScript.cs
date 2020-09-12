@@ -85,6 +85,11 @@ public class EnemyScript : MonoBehaviour
             {
                 playerController.isDead = true;
             }
+
+            if (!playerController.isDead && playerController.isAttacking)
+            {
+                isDead = true;
+            }
         }
 
     }

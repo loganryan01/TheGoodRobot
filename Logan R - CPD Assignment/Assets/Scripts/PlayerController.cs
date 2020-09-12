@@ -18,14 +18,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 10.0f;
     public float jumpForce = 1.0f;
     public float gravity = -9.81f;
-    public float maximumRotation = 90.0f;
     public float playerCoins = 0;
 
     public bool isGrounded;
     public bool isAttacking;
-    public bool turning = false;
+    public bool isOnBox;
     public bool onPlatform;
-    public bool touchingEnemy;
     public bool isDead;
     public bool touchingBox;
     public bool falling;
@@ -47,6 +45,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // ----- Box Collision -----
+        // Jumping on a box
+        if (other.gameObject.CompareTag("Box") && falling)
+        {
+            //Debug.Log("Destroying box");
+            playerCoins++;
+            Destroy(other.gameObject);
+            velocity.y = 0;
+            velocity.y += 5.0f;
+        }
+
         // ----- Coin Collision -----
         // Touching coin
         if (other.gameObject.CompareTag("Coin"))
@@ -64,6 +73,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Respawn"))
         {
             isGrounded = true;
+            velocity.y = 0;
         }
 
         // ----- Finish Collision -----
@@ -96,6 +106,18 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
+        if (other.gameObject.CompareTag("Respawn"))
+        {
+            isGrounded = true;
+        }
+
+        // ----- Box Collision -----
+        // If the player is not jumping, falling, or not on the ground
+        if (other.gameObject.CompareTag("Box") && !jumping && !falling && !isGrounded)
+        {
+            isOnBox = true;
+        }
+
         // ----- Box Collision -----
         if (other.gameObject.CompareTag("Box") && isAttacking)
         {
@@ -117,6 +139,12 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
+        // If the player is not jumping
+        if (other.gameObject.CompareTag("Box"))
+        {
+            isOnBox = false;
+        }
+
         // ----- Moving Platform Collision -----
         if (other.gameObject.CompareTag("MovingPlatform"))
         {
@@ -135,38 +163,27 @@ public class PlayerController : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // ----- Enemy Collision -----
-        // Touching enemy
+        // Jumping on enemy
         if (hit.gameObject.CompareTag("Enemy"))
         {
             enemyScript = hit.gameObject.GetComponent<EnemyScript>();
 
-            if (!enemyScript.isDead)
+            if (!enemyScript.isDead && !isGrounded)
             {
-                touchingEnemy = true;
+                velocity.y = 0;
+                velocity.y = 5;
+                enemyScript.isDead = true;
             }
-        }
-
-        // Jumping on enemy
-        if (hit.gameObject.CompareTag("Enemy") && !isGrounded)
-        {
-            enemyScript = hit.gameObject.GetComponent<EnemyScript>();
-
-            if (!enemyScript.isDead)
+            else if (!enemyScript.isDead && isAttacking)
             {
-                velocity.y = jumpForce;
+                enemyScript.isDead = true;
+            }
+            else if (!enemyScript.isDead && !isAttacking && isGrounded)
+            {
+                isDead = true;
             }
 
-            enemyScript.isDead = true;
-            touchingEnemy = false;
-        }
-
-        // ----- Box Collision -----
-        // Jumping on box
-        if (hit.gameObject.CompareTag("Box") && falling)
-        {
-            playerCoins++;
-            Destroy(hit.gameObject);
-            velocity.y += 10.0f;
+            enemyScript = null;
         }
     }
 
@@ -239,18 +256,30 @@ public class PlayerController : MonoBehaviour
         {
             velocity.y += gravity * Time.deltaTime;
             
-            if (isGrounded && velocity.y < 0)
+            if (isGrounded && velocity.y < 0 ||
+                isOnBox && velocity.y < 0)
             {
                 velocity.y = 0;
             }
 
-            if (!isGrounded && velocity.y < 0)
+            if (!isGrounded && velocity.y < 0 ||
+                !isOnBox && velocity.y < 0)
             {
                 falling = true;
             }
             else
             {
                 falling = false;
+            }
+
+            if (!isGrounded && velocity.y > 0 ||
+                !isOnBox && velocity.y > 0)
+            {
+                jumping = true;
+            }
+            else
+            {
+                jumping = false;
             }
 
             robo3CharacterController.Move(velocity * Time.deltaTime);
@@ -264,19 +293,7 @@ public class PlayerController : MonoBehaviour
                 isAttacking = false;
             }
 
-            // ----- Collision Check -----
-            // Attacking enemy
-            if (touchingEnemy && isAttacking)
-            {
-                enemyScript.isDead = true;
-                enemyScript = null;
-                touchingEnemy = false;
-            }
-            else if (touchingEnemy && !enemyScript.isDead)
-            {
-                isDead = true;
-            }
-
+            // Check if player has fallen off
             if (transform.position.y < -5)
             {
                 isDead = true;
@@ -302,7 +319,7 @@ public class PlayerController : MonoBehaviour
     // Jump function
     public void Jump()
     {
-        if (isGrounded)
+        if (isGrounded || isOnBox)
         {
             velocity.y += Mathf.Sqrt(jumpForce * -3.0f * gravity);
             isGrounded = false;
