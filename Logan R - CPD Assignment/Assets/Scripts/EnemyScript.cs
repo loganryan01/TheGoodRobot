@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     private Vector3 direction = Vector3.right;
+    private Vector3 startPos;
 
     public ParticleSystem smokeParticles;
     public CharacterController robo2Controller;
@@ -21,6 +22,7 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startPos = transform.position;
         robo2Controller = GetComponent<CharacterController>();
         robo2Animator = GetComponent<Animator>();
     }
@@ -37,7 +39,7 @@ public class EnemyScript : MonoBehaviour
         {
             robo2Controller.Move(direction * speed * Time.deltaTime);
 
-            if (transform.position.x > xRange)
+            if (transform.position.x > (startPos.x + xRange))
             {
                 // Stop moving and turn
                 direction = Vector3.zero;
@@ -50,7 +52,7 @@ public class EnemyScript : MonoBehaviour
                     direction = -Vector3.right;
                 }
             }
-            else if (transform.position.x < -xRange)
+            else if (transform.position.x < (startPos.x - xRange))
             {
                 direction = Vector3.zero;
                 robo2Animator.SetBool("AtEdge", true);
@@ -64,7 +66,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3(transform.position.x, 0, 19);
+        transform.position = new Vector3(transform.position.x, 0, startPos.z);
     }
 
     public void OnDestroy()

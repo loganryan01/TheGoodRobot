@@ -312,9 +312,9 @@ public class PlayerController : MonoBehaviour
     // Prevent the player from going out of bounds
     void ConstraintPlayerPosition()
     {
-        if (transform.position.z < -0.5)
+        if (transform.position.z < 5)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, -0.5f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 5f);
         }
     }
 }
