@@ -121,15 +121,13 @@ MonoBehaviour:
   robo3CharacterController: {fileID: 0}
   enemyScript: {fileID: 0}
   speed: 10
-  jumpForce: 3
+  jumpForce: 2.5
   gravity: -10
-  maximumRotation: 90
   playerCoins: 0
   isGrounded: 0
   isAttacking: 0
-  turning: 0
+  isOnBox: 0
   onPlatform: 0
-  touchingEnemy: 0
   isDead: 0
   touchingBox: 0
   falling: 0

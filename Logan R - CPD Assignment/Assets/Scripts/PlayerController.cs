@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
-    public Text scoreText;
+    public TextMeshProUGUI scoreText;
     public Joystick joystick;
     public CharacterController robo3CharacterController;
     public EnemyScript enemyScript;
     private DroppingPlatformScript droppingPlatform;
+    public AudioClip deathSound;
 
     private Vector3 velocity;
 
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool touchingBox;
     public bool falling;
     public bool jumping;
+    private bool played;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +52,6 @@ public class PlayerController : MonoBehaviour
         // Jumping on a box
         if (other.gameObject.CompareTag("Box") && falling)
         {
-            //Debug.Log("Destroying box");
             playerCoins++;
             Destroy(other.gameObject);
             velocity.y = 0;
@@ -304,7 +306,14 @@ public class PlayerController : MonoBehaviour
 
         if (isDead)
         {
+            
             animator.SetBool("Dead", true);
+
+            if (!played)
+            {
+                AudioSource.PlayClipAtPoint(deathSound, transform.position);
+                played = true;
+            }
         }
     }
 

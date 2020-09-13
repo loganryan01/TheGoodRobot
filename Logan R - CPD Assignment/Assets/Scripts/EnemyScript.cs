@@ -11,6 +11,7 @@ public class EnemyScript : MonoBehaviour
     public CharacterController robo2Controller;
     public Animator robo2Animator;
     public PlayerController playerController;
+    public AudioClip deathSound;
 
     public float xRange = 5;
     public float speed = 10.0f;
@@ -71,6 +72,7 @@ public class EnemyScript : MonoBehaviour
 
     public void OnDestroy()
     {
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
         Instantiate(smokeParticles, transform.position, smokeParticles.transform.rotation);
         smokeParticles.Play();
     }

@@ -11,6 +11,8 @@ public class HowToPlayMenu : MonoBehaviour
     public GameObject startButton;
     public GameObject keyboardControls;
     public GameObject joystickControls;
+    public GameObject player;
+    public GameObject stand;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,8 @@ public class HowToPlayMenu : MonoBehaviour
     public void Back()
     {
         mainMenu.SetActive(true);
+        player.SetActive(true);
+        stand.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
         gameObject.SetActive(false);

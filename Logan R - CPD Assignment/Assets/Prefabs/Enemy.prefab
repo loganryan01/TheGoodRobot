@@ -237,6 +237,7 @@ MonoBehaviour:
   robo2Controller: {fileID: 0}
   robo2Animator: {fileID: 0}
   playerController: {fileID: 0}
+  deathSound: {fileID: 8300000, guid: 44077ec19542e844bb00c879b3f47bb3, type: 3}
   xRange: 5
   speed: 10
   isDead: 0

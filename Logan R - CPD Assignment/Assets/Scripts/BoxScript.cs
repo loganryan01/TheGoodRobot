@@ -5,9 +5,11 @@ using UnityEngine;
 public class BoxScript : MonoBehaviour
 {
     public ParticleSystem smokeParticles;
+    public AudioClip brokenSoundEffect;
 
     public void OnDestroy()
     {
+        AudioSource.PlayClipAtPoint(brokenSoundEffect, transform.position);
         Instantiate(smokeParticles, transform.position, smokeParticles.transform.rotation);
         smokeParticles.Play();
     }

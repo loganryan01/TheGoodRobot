@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject howToPlayMenu;
     public GameObject startButton;
+    public GameObject player;
+    public GameObject stand;
     
     public void PlayGame()
     {
@@ -20,6 +22,8 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
         gameObject.SetActive(false);
+        player.SetActive(false);
+        stand.SetActive(false);
     }
 
     public void QuitGame()
