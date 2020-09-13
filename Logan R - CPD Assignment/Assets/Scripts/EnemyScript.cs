@@ -66,7 +66,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        transform.position = new Vector3(transform.position.x, 0, startPos.z);
+        transform.position = new Vector3(transform.position.x, startPos.y, startPos.z);
     }
 
     public void OnDestroy()

@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
         {
             playerCoins++;
             Destroy(other.gameObject);
+            isOnBox = false;
         }
     }
 
