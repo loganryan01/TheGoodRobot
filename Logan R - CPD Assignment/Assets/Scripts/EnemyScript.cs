@@ -36,7 +36,7 @@ public class EnemyScript : MonoBehaviour
             StartCoroutine(PlayDead());
             robo2Controller.enabled = false;
         }
-        else
+        else if (xRange != 0)
         {
             robo2Controller.Move(direction * speed * Time.deltaTime);
 
@@ -65,6 +65,10 @@ public class EnemyScript : MonoBehaviour
                     direction = Vector3.right;
                 }
             }
+        }
+        else
+        {
+            robo2Animator.SetBool("AtEdge", true);
         }
 
         transform.position = new Vector3(transform.position.x, startPos.y, startPos.z);
