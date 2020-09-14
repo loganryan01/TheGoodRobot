@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2358115128800104567}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children:
   - {fileID: 5868992393712128264}
@@ -15011,7 +15011,6 @@ GameObject:
   - component: {fileID: 8031149967430237643}
   - component: {fileID: 5983245931063328872}
   - component: {fileID: 607456028974290217}
-  - component: {fileID: 2459109085750345987}
   m_Layer: 0
   m_Name: Lightning (2)
   m_TagString: Lightning
@@ -19756,19 +19755,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &2459109085750345987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6428617855152048931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6e35bd982a8514c9103522fa8a3697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3418291090551694040, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
 --- !u!1 &6617566308026882569
 GameObject:
   m_ObjectHideFlags: 0
@@ -19814,7 +19800,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9, y: 9, z: 1}
+  m_Size: {x: 18.4, y: 9, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1918343812
 MonoBehaviour:
@@ -19830,7 +19816,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningParticles:
   - {fileID: 3023906366862067781}
+  - {fileID: 662992397309650500}
   - {fileID: 5983245931063328872}
+  - {fileID: 6663826783546623735}
 --- !u!1 &7003069748122070250
 GameObject:
   m_ObjectHideFlags: 0
@@ -34192,7 +34180,6 @@ GameObject:
   - component: {fileID: 5868992393712128264}
   - component: {fileID: 3023906366862067781}
   - component: {fileID: 8729559216409393126}
-  - component: {fileID: 1929608061}
   - component: {fileID: 641930777272578303}
   m_Layer: 0
   m_Name: Lightning
@@ -38938,19 +38925,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &1929608061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8912166042006963358}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6e35bd982a8514c9103522fa8a3697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!82 &641930777272578303
 AudioSource:
   m_ObjectHideFlags: 0

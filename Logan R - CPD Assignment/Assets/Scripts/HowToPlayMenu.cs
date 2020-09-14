@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -14,6 +15,10 @@ public class HowToPlayMenu : MonoBehaviour
     public GameObject player;
     public GameObject stand;
 
+    public GameObject switchButton;
+    public GameObject controlsMenu;
+    public GameObject instructionsMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +29,7 @@ public class HowToPlayMenu : MonoBehaviour
     void Update()
     {
         controllers = Input.GetJoystickNames();
-        Debug.Log(controllers.Length);
+        //Debug.Log(controllers.Length);
 
         if (controllers.Length > 0)
         {
@@ -35,6 +40,23 @@ public class HowToPlayMenu : MonoBehaviour
         {
             keyboardControls.SetActive(true);
             joystickControls.SetActive(false);
+        }
+    }
+
+    public void Switch()
+    {
+        if (controlsMenu.activeSelf)
+        {
+            //switchButton.GetComponent<TextMeshProUGUI>().text = "CONTROLS";
+            switchButton.GetComponentInChildren<TextMeshProUGUI>().text = "CONTROLS";
+            instructionsMenu.SetActive(true);
+            controlsMenu.SetActive(false);
+        }
+        else if (instructionsMenu.activeSelf)
+        {
+            switchButton.GetComponentInChildren<TextMeshProUGUI>().text = "INSTRUCTIONS";
+            controlsMenu.SetActive(true);
+            instructionsMenu.SetActive(false);
         }
     }
 
