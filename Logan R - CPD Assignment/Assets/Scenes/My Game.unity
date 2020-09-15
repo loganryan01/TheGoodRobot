@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3809,7 +3808,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4519,7 +4517,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5414,7 +5411,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &210695864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5502,7 +5500,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6423,7 +6420,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &242984985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6859,7 +6857,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6949,7 +6946,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7933,7 +7929,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &304393309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9576,7 +9573,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &355932436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9748,7 +9746,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &368333990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10722,7 +10721,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10825,7 +10823,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &408355042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13536,7 +13535,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &503342102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14790,7 +14790,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &543601431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15331,7 +15332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &560468743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15842,7 +15844,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18363,7 +18364,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -20632,7 +20632,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -21679,7 +21678,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &768415159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22208,7 +22208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &793831539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22563,7 +22564,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -22670,7 +22670,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &805091431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23241,7 +23242,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &839541252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25422,7 +25424,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &918845981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29142,7 +29145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1027585741
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29620,7 +29624,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1034242169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32404,7 +32409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1149227704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34439,7 +34445,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -34997,7 +35002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1238903073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35174,7 +35180,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -35655,7 +35660,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1253605857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37349,7 +37355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1333103666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37963,7 +37970,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1356882360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38640,7 +38648,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1380190836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39441,7 +39450,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1404266767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39884,7 +39894,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -41210,7 +41219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1485354348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42619,7 +42629,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1526896534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43426,7 +43437,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1568851868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43492,7 +43504,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -45573,7 +45584,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1638763410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45737,7 +45749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1647573335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46206,7 +46219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1675019236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48421,7 +48435,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -48843,7 +48856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1800782239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49280,7 +49294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1814334985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49915,7 +49930,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -50177,7 +50191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1836326723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50373,7 +50388,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -51627,7 +51641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1880570147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52304,7 +52319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &1899070670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52787,7 +52803,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -53884,7 +53899,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -56300,7 +56314,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -57284,7 +57297,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &2104805563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57521,7 +57535,6 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -57580,7 +57593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!4 &2112065791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4725293624299974, guid: b8fc8c3d0e0ff9b4089c4e346ac42ecc,
@@ -57744,7 +57758,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenBoxSoundEffect: {fileID: 0}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}
 --- !u!65 &2116263191
 BoxCollider:
   m_ObjectHideFlags: 0
