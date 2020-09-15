@@ -13,8 +13,7 @@ public class HowToPlayMenu : MonoBehaviour
     public GameObject startButton;
     public GameObject keyboardControls;
     public GameObject joystickControls;
-    public GameObject player;
-    public GameObject stand;
+    public GameObject touchControls;
 
     public GameObject switchButton;
     public GameObject controlsMenu;
@@ -29,22 +28,35 @@ public class HowToPlayMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        controllers = Input.GetJoystickNames();
-
-        for (int i = 0; i < controllers.Length; i++)
+        if (Application.isMobilePlatform)
         {
-            if (!String.IsNullOrEmpty(controllers[i]))
-            {
-                keyboardControls.SetActive(false);
-                joystickControls.SetActive(true);
-            }
-            else
+            touchControls.SetActive(true);
+            keyboardControls.SetActive(true);
+        }
+        else
+        {
+            controllers = Input.GetJoystickNames();
+
+            if (controllers.Length == 0)
             {
                 keyboardControls.SetActive(true);
                 joystickControls.SetActive(false);
             }
+
+            for (int i = 0; i < controllers.Length; i++)
+            {
+                if (!String.IsNullOrEmpty(controllers[i]))
+                {
+                    keyboardControls.SetActive(false);
+                    joystickControls.SetActive(true);
+                }
+                else
+                {
+                    keyboardControls.SetActive(true);
+                    joystickControls.SetActive(false);
+                }
+            }
         }
-        
     }
 
     public void Switch()
@@ -66,8 +78,6 @@ public class HowToPlayMenu : MonoBehaviour
     public void Back()
     {
         mainMenu.SetActive(true);
-        player.SetActive(true);
-        stand.SetActive(true);
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
         gameObject.SetActive(false);
