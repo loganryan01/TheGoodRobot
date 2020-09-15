@@ -21512,6 +21512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1924825533}
   startButton: {fileID: 1243123251}
+  playerController: {fileID: 1429242965}
 --- !u!114 &763707798
 MonoBehaviour:
   m_ObjectHideFlags: 0

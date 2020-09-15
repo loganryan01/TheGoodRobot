@@ -10,11 +10,12 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject startButton;
+    public PlayerController playerController;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !playerController.isDead)
         {
             if (GameIsPaused)
             {

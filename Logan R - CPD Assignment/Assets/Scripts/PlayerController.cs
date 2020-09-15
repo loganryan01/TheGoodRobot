@@ -224,7 +224,7 @@ public class PlayerController : MonoBehaviour
                 float horizontalInput = Input.GetAxis("Horizontal");
                 float verticalInput = Input.GetAxis("Vertical");
                 string jumpAxis = "Jump";
-                string fireAxis = "Fire3";
+                string fireAxis = "Fire2";
 
                 if (horizontalInput != 0 || verticalInput != 0)
                 {
