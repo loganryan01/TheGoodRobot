@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &210695864
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5705,8 +5705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &218777431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6424,7 +6423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &242984985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7934,7 +7933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &304393309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8479,8 +8478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &323876240
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9379,8 +9377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &351835903
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -9579,7 +9576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &355932436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9751,7 +9748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &368333990
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10828,7 +10825,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &408355042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13539,7 +13536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &503342102
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14793,7 +14790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &543601431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15334,7 +15331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &560468743
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21542,7 +21539,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 1832872257}
-  player: {fileID: 1429242964}
+  playerController: {fileID: 1429242965}
   startButton: {fileID: 256645634}
 --- !u!1001 &767563692
 PrefabInstance:
@@ -21682,7 +21679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &768415159
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22211,7 +22208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &793831539
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22673,7 +22670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &805091431
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23244,7 +23241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &839541252
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24363,8 +24360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &892071934
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25426,7 +25422,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &918845981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25492,8 +25488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &921775542
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -25760,8 +25755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &931670671
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -29148,7 +29142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1027585741
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29626,7 +29620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1034242169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29755,8 +29749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1044998945
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -30654,8 +30647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1083526870
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -32412,7 +32404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1149227704
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33469,6 +33461,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdeb98af2df0e044fa55e087b22467dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropSpeed: 10
+  waitTime: 1.5
   playerOnPlatform: 0
 --- !u!65 &1192245936
 BoxCollider:
@@ -35003,7 +34997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1238903073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35661,7 +35655,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1253605857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36916,8 +36910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1318139772
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -37356,7 +37349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1333103666
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37970,7 +37963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1356882360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38647,7 +38640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1380190836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39243,8 +39236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1399923883
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -39449,7 +39441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1404266767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41218,7 +41210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1485354348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42627,7 +42619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1526896534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43434,7 +43426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1568851868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45581,7 +45573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1638763410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45745,7 +45737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1647573335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46214,7 +46206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1675019236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47281,8 +47273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1730677903
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -47734,8 +47725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1759527014
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -47995,8 +47985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1774457633
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -48854,7 +48843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1800782239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49291,7 +49280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1814334985
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49494,8 +49483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &1819340676
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -50189,7 +50177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1836326723
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -51639,7 +51627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1880570147
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52316,7 +52304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &1899070670
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57296,7 +57284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &2104805563
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57592,7 +57580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!4 &2112065791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4725293624299974, guid: b8fc8c3d0e0ff9b4089c4e346ac42ecc,
@@ -57756,7 +57744,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 0}
 --- !u!65 &2116263191
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58062,8 +58050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &2125835319
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -58548,8 +58535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
-    type: 3}
+  coinCollectedSoundEffect: {fileID: 0}
 --- !u!135 &2141940756
 SphereCollider:
   m_ObjectHideFlags: 0

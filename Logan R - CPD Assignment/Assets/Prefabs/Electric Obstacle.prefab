@@ -24642,7 +24642,6 @@ GameObject:
   - component: {fileID: 460681166580811028}
   - component: {fileID: 662992397309650500}
   - component: {fileID: 4175402100882754457}
-  - component: {fileID: 4307958327744446333}
   m_Layer: 0
   m_Name: Lightning (1)
   m_TagString: Lightning
@@ -29387,19 +29386,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &4307958327744446333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7529228680443078246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6e35bd982a8514c9103522fa8a3697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &8197902156039061806
 GameObject:
   m_ObjectHideFlags: 0
@@ -29411,7 +29397,6 @@ GameObject:
   - component: {fileID: 3506369201378778769}
   - component: {fileID: 6663826783546623735}
   - component: {fileID: 5717030081571737148}
-  - component: {fileID: 2874681127377609012}
   m_Layer: 0
   m_Name: Lightning (3)
   m_TagString: Lightning
@@ -34156,19 +34141,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &2874681127377609012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8197902156039061806}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6e35bd982a8514c9103522fa8a3697, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 3418291090551694040, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
 --- !u!1 &8912166042006963358
 GameObject:
   m_ObjectHideFlags: 0

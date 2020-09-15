@@ -1,15 +1,26 @@
-﻿using System.Collections;
+﻿/*------------------------------------
+    File name: FollowPlayer.cs
+    Purpose: Follow behind the player.
+    Author: Logan Ryan
+    Modified: 15 September 2020
+--------------------------------------
+    Copyright 2020 Logan Ryan
+------------------------------------*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
+
     private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
+        // Set the offset for the object
         offset = new Vector3(6, 4, -5);
     }
 

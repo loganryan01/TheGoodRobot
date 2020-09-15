@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1276353369510535598}
   - component: {fileID: 1276353369510535599}
   m_Layer: 0
-  m_Name: Crate_04_snaps002
+  m_Name: Breakable Crates
   m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,4 +124,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  brokenSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4, type: 3}
+  brokenBoxSoundEffect: {fileID: 8300000, guid: ac31834db20888c449daf02bff1459a4,
+    type: 3}

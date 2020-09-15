@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
     type: 3}
