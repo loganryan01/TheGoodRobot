@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -29,25 +30,27 @@ public class HowToPlayMenu : MonoBehaviour
     void Update()
     {
         controllers = Input.GetJoystickNames();
-        //Debug.Log(controllers.Length);
 
-        if (controllers.Length > 0)
+        for (int i = 0; i < controllers.Length; i++)
         {
-            keyboardControls.SetActive(false);
-            joystickControls.SetActive(true);
+            if (!String.IsNullOrEmpty(controllers[i]))
+            {
+                keyboardControls.SetActive(false);
+                joystickControls.SetActive(true);
+            }
+            else
+            {
+                keyboardControls.SetActive(true);
+                joystickControls.SetActive(false);
+            }
         }
-        else
-        {
-            keyboardControls.SetActive(true);
-            joystickControls.SetActive(false);
-        }
+        
     }
 
     public void Switch()
     {
         if (controlsMenu.activeSelf)
         {
-            //switchButton.GetComponent<TextMeshProUGUI>().text = "CONTROLS";
             switchButton.GetComponentInChildren<TextMeshProUGUI>().text = "CONTROLS";
             instructionsMenu.SetActive(true);
             controlsMenu.SetActive(false);
