@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             playerCoins++;
             Destroy(other.gameObject);
             velocity.y = 0;
-            velocity.y += 5.0f;
+            velocity.y += 8.0f;
         }
 
         // ----- Coin Collision -----
