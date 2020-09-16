@@ -48,7 +48,17 @@ public class GameOverMenu : MonoBehaviour
         playerController.isDead = false;
 
         // Reload the scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (Checkpoint.GetActiveCheckPointPosition() != Vector3.zero || Checkpoint.GetActiveCheckPointPosition() != null)
+        {
+            Debug.Log("Spawning at checkpoint");
+            Vector3 startPos = Checkpoint.GetActiveCheckPointPosition();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            playerController.robo3CharacterController.transform.position = startPos;
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     // LoadMenu is the function to let the player go back to the main menu

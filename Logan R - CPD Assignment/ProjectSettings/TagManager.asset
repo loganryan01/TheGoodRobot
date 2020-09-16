@@ -12,6 +12,7 @@ TagManager:
   - MovingPlatform
   - DroppingPlatform
   - GM
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

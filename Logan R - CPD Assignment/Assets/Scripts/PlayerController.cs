@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public EnemyScript enemyScript;
     private DroppingPlatformScript droppingPlatform;
     public AudioClip deathSound;
-    private GameMaster gm;
 
     private Vector3 velocity;
 
@@ -37,11 +36,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         robo3CharacterController = GetComponent<CharacterController>();
-        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
 
-        if (gm.lastCheckPointPos != Vector3.zero)
+        if (Checkpoint.GetActiveCheckPointPosition() != Vector3.zero)
         {
-            transform.position = gm.lastCheckPointPos;
+            Debug.Log("Spawning at checkpoint");
+            robo3CharacterController.transform.position = Checkpoint.GetActiveCheckPointPosition();
         }
     }
 
@@ -196,6 +195,8 @@ public class PlayerController : MonoBehaviour
             enemyScript = null;
         }
     }
+
+    
 
     // Move the player through the arrow keys and jump with the spacebar
     void MovePlayer()
