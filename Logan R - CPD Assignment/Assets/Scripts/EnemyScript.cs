@@ -2,7 +2,7 @@
     File name: EnemyScript.cs
     Purpose: Control the enemy's behaviour.
     Author: Logan Ryan
-    Modified: 15 September 2020
+    Modified: 16 September 2020
 -------------------------------------------
     Copyright 2020 Logan Ryan
 -----------------------------------------*/
@@ -123,7 +123,7 @@ public class EnemyScript : MonoBehaviour
         smokeParticles.Play();
     }
 
-    // OnControllerColliderHit is called when the MonoBehaviour hits a collider while performing a Move
+    // OnControllerColliderHit is called when the controller hits a collider while performing a Move
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         // If the enemy touches the player
@@ -149,22 +149,22 @@ public class EnemyScript : MonoBehaviour
 
     }
 
-    // LerpFunction is a coroutine to rotate the object
+    /// <summary>
+    /// LerpFunction is a coroutine to rotate the object
+    /// </summary>
+    /// <param name="endValue"> A value greater than or equal to 0 </param>
+    /// <param name="duration"> A value greater than 0 </param>
+    /// <returns> yield return null will make the loop run again in the next frame. </returns>
     IEnumerator LerpFunction(Quaternion endValue, float duration)
     {
-        // Time it has taken to rotate
         float time = 0;
-
-        // Starting rotation
         Quaternion startValue = transform.rotation;
 
-        // While the time is less than the duration (How long it should take to rotate)
         while (time < duration)
         {
             // Rotate from the starting value
             transform.rotation = Quaternion.Lerp(startValue, endValue, time / duration);
 
-            // Add the delta time to the time variable
             time += Time.deltaTime;
             yield return null;
         }
@@ -173,7 +173,10 @@ public class EnemyScript : MonoBehaviour
         transform.rotation = endValue;
     }
 
-    // PlayDead is a coroutine to play the dead animation and destroy the enemy object
+    /// <summary>
+    /// PlayDead is a coroutine to play the dead animation and destroy the enemy object
+    /// </summary>
+    /// <returns> yield return new WaitForSeconds will make the coroutine stop for a couple of seconds then continue. </returns>
     IEnumerator PlayDead()
     {
         robo2Animator.SetBool("Dead", true);

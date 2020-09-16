@@ -2,7 +2,7 @@
     File name: LightningScript.cs
     Purpose: Switch the lighning on and off.
     Author: Logan Ryan
-    Modified: 15 September 2020
+    Modified: 16 September 2020
 --------------------------------------------
     Copyright 2020 Logan Ryan
 ------------------------------------------*/
@@ -44,7 +44,11 @@ public class LightningScript : MonoBehaviour
         }
     }
 
-    // ShootLightning is a coroutine that switches the lightning on and off
+    /// <summary>
+    /// ShootLightning is a coroutine that switches the lightning on and off
+    /// </summary>
+    /// <param name="index"> A value greater than 0. </param>
+    /// <returns> yield return new WaitForSeconds will make the coroutine stop for a couple of seconds then continue. </returns>
     IEnumerator ShootLightning(int index)
     {
         // Switch the lightning off

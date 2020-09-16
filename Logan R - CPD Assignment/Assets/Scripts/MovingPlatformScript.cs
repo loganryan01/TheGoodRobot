@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*---------------------------------------------------------
+    File name: MovingPlatformScript.cs
+    Purpose: Make the platform move in the x and/or z axis.
+    Author: Logan Ryan
+    Modified: 16 September 2020
+-----------------------------------------------------------
+    Copyright 2020 Logan Ryan
+---------------------------------------------------------*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -18,30 +27,39 @@ public class MovingPlatformScript : MonoBehaviour
         startPos = transform.position;
     }
 
-    // Update is called once per frame
+    // FixedUpdate is called every fixed framerate frame, if the MonoBehaviour is enabled
     void FixedUpdate()
     {
+        // If the platform is moving on the x axis
         if (xRange != 0)
         {
+            // Set diretion to right if it has no direction
             if (xDirection == Vector3.zero)
             {
                 xDirection = Vector3.right;
             }
             
+            // If the platform has reach the right edge of its range
             if (transform.position.x > (startPos.x + xRange))
             {
+               // Set direction to left
                 xDirection = -Vector3.right;
             }
+            // If the platform has reach the left edge of its range
             else if (transform.position.x < (startPos.x - xRange))
             {
+                // Set direction to right
                 xDirection = Vector3.right;
             }
 
+            // Move platform
             transform.Translate(xDirection * speed * Time.fixedDeltaTime);
         }
 
+        // If the platform is moving on the z axis
         if (zRange != 0)
         {
+            // Do the same procedure as above but the platform moves forwards and backwards
             if (zDirection == Vector3.zero)
             {
                 zDirection = Vector3.forward;

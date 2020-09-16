@@ -1,4 +1,13 @@
-﻿using System.Collections;
+﻿/*-------------------------------------------------------------------
+    File name: Checkpoint.cs
+    Purpose: Respawn the player at their location if they touched it.
+    Author: Logan Ryan
+    Modified: 16 September 2020
+---------------------------------------------------------------------
+    Copyright 2020 Logan Ryan
+-------------------------------------------------------------------*/
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -12,15 +21,20 @@ public class Checkpoint : MonoBehaviour
 
     public Material[] materials;
 
+    // Awake is called when the script instance is being loaded
     private void Awake()
     {
+        // Number of checkpoints in the hierarchy
         int numCheckPoints = FindObjectsOfType<Checkpoint>().Length;
 
+        // If there are more than 2 checkpoints
         if (numCheckPoints != 2)
         {
+            // Destroy the game object
             Destroy(gameObject);
             
         }
+        // Otherwise, make the object not to be destroyed on load
         else
         {
             DontDestroyOnLoad(gameObject);
@@ -37,24 +51,30 @@ public class Checkpoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If the player is no longer on the game scene
         if (SceneManager.GetActiveScene().name != "My Game")
         {
+            // Destroy 
             Destroy(gameObject);
         }
     }
 
+    /// <summary>
+    /// OnTriggerEnter is called when the Collider other enters the trigger
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Touching Player");
             ActivateCheckPoint();
         }
     }
 
+    // Activate the checkpoint if the player touches it
     private void ActivateCheckPoint()
     {
-        // We deactive all checkpoints in the scene
+        // Deactivate all checkpoints in the scene
         foreach (GameObject cp in CheckPointsList)
         {
             cp.GetComponent<Checkpoint>().activated = false;
