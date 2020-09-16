@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public EnemyScript enemyScript;
     private DroppingPlatformScript droppingPlatform;
     public AudioClip deathSound;
+    private GameMaster gm;
 
     private Vector3 velocity;
 
@@ -36,6 +37,12 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         robo3CharacterController = GetComponent<CharacterController>();
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+
+        if (gm.lastCheckPointPos != Vector3.zero)
+        {
+            transform.position = gm.lastCheckPointPos;
+        }
     }
 
     // Update is called once per frame
