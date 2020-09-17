@@ -17,7 +17,7 @@ This project has been created to demonstrate a basic understanding of using 3D G
 5. Click build and run
 
 ## Screenshots
-![Demo](/Resources/screenshots/ScreenCapture.gif "Demo")
+![Demo](/docs/InGameShot.png "Demo")
 
 ## Credits
  - **Unity:** A 3D game engine, used to create this demo. <br> [https://www.unity.com](https://www.unity.com)
