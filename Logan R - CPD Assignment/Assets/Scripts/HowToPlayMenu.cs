@@ -28,6 +28,9 @@ public class HowToPlayMenu : MonoBehaviour
     public GameObject controlsMenu;
     public GameObject instructionsMenu;
 
+    public GameObject player;
+    public GameObject pole;
+
     // Update is called once per frame
     void Update()
     {
@@ -97,6 +100,8 @@ public class HowToPlayMenu : MonoBehaviour
     {
         // Set the main menu to active
         mainMenu.SetActive(true);
+        player.SetActive(true);
+        pole.SetActive(true);
 
         // Set the selected button to be the chosen start button
         EventSystem.current.SetSelectedGameObject(null);

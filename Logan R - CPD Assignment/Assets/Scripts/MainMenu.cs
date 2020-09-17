@@ -17,7 +17,10 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject howToPlayMenu;
     public GameObject startButton;
-    
+
+    public GameObject player;
+    public GameObject pole;
+
     // PlayGame loads the next scene
     public void PlayGame()
     {
@@ -31,6 +34,8 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startButton);
         gameObject.SetActive(false);
+        player.SetActive(false);
+        pole.SetActive(false);
     }
 
     // QuitGame quits the game
