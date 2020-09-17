@@ -21,6 +21,17 @@ public class MainMenu : MonoBehaviour
     public GameObject player;
     public GameObject pole;
 
+    public GameObject quitButton;
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            quitButton.SetActive(false);
+        }
+    }
+
     // PlayGame loads the next scene
     public void PlayGame()
     {

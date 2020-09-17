@@ -14,6 +14,17 @@ using UnityEngine.SceneManagement;
 
 public class VictoryMenu : MonoBehaviour
 {
+    public GameObject quitButton;
+
+    // Update is called once per frame
+    private void Update()
+    {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            quitButton.SetActive(false);
+        }
+    }
+
     // PlayGame allows the player to play the game again
     public void PlayGame()
     {

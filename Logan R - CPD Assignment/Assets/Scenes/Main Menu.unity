@@ -3416,6 +3416,7 @@ MonoBehaviour:
   startButton: {fileID: 1175231981}
   player: {fileID: 1021101759}
   pole: {fileID: 1280842188}
+  quitButton: {fileID: 1619167373}
 --- !u!1 &1021101759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3418291090551694040, guid: 715e5c6c54417b641926661bb43e9fed,
