@@ -22,3 +22,4 @@ This project has been created to demonstrate a basic understanding of using 3D G
 ## Credits
  - **Unity:** A 3D game engine, used to create this demo. <br> [https://www.unity.com](https://www.unity.com)
  - **Unity Asset Store:** A store containing free to use assets. <br> [https://assetstore.unity.com/](https://assetstore.unity.com/)
+ - **ZapSplat:** A website containing free music and sound effects, that were used in my game. <br> [https://www.zapsplat.com/](https://www.zapsplat.com/)
