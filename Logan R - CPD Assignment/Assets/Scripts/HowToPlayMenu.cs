@@ -39,7 +39,7 @@ public class HowToPlayMenu : MonoBehaviour
         {
             // Show the touch controls
             touchControls.SetActive(true);
-            keyboardControls.SetActive(true);
+            keyboardControls.SetActive(false);
         }
         else
         {
