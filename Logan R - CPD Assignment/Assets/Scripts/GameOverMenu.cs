@@ -18,10 +18,16 @@ public class GameOverMenu : MonoBehaviour
     public GameObject gameOverUI;
     public PlayerController playerController;
     public GameObject startButton;
+    public GameObject quitButton;
 
     // Update is called once per frame
     void Update()
     {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            quitButton.SetActive(false);
+        }
+
         // If the player is dead
         if (playerController.isDead)
         {

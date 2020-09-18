@@ -234,12 +234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smokeParticles: {fileID: 3009889940997576956, guid: bc75c6b957d98d348986c07105980dd0,
     type: 3}
-  robo2Controller: {fileID: 0}
-  robo2Animator: {fileID: 0}
-  playerController: {fileID: 0}
-  deathSound: {fileID: 8300000, guid: 44077ec19542e844bb00c879b3f47bb3, type: 3}
-  xRange: 5
-  speed: 10
+  deathSound: {fileID: 8300000, guid: ca74d10fc6060dd41b182f0dff68ecca, type: 3}
+  xRange: 3
+  speed: 5
   isDead: 0
 --- !u!1 &7859198095503272034
 GameObject:

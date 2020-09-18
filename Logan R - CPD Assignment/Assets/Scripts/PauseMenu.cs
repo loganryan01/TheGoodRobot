@@ -19,11 +19,17 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject startButton;
+    public GameObject quitButton;
     public PlayerController playerController;
 
     // Update is called once per frame
     void Update()
     {
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            quitButton.SetActive(false);
+        }
+        
         if (Input.GetButtonDown("Cancel") && !playerController.isDead)
         {
             if (GameIsPaused)

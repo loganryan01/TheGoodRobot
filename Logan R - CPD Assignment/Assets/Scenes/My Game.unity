@@ -5702,7 +5702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &218777431
 SphereCollider:
@@ -7328,23 +7328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1768405260, guid: 5e864244da0346743a2a684c61d41930, type: 3}
-      propertyPath: xRange
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1768405260, guid: 5e864244da0346743a2a684c61d41930, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7859182224064103198, guid: 5e864244da0346743a2a684c61d41930,
         type: 3}
       propertyPath: m_Name
       value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7859182224064103198, guid: 5e864244da0346743a2a684c61d41930,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7861069520662448870, guid: 5e864244da0346743a2a684c61d41930,
         type: 3}
@@ -8476,7 +8463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &323876240
 SphereCollider:
@@ -9376,7 +9363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &351835903
 SphereCollider:
@@ -21511,6 +21498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 1924825533}
   startButton: {fileID: 1243123251}
+  quitButton: {fileID: 1791524440}
   playerController: {fileID: 1429242965}
 --- !u!114 &763707798
 MonoBehaviour:
@@ -21543,6 +21531,7 @@ MonoBehaviour:
   gameOverUI: {fileID: 1832872257}
   playerController: {fileID: 1429242965}
   startButton: {fileID: 256645634}
+  quitButton: {fileID: 567793001}
 --- !u!1001 &767563692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24365,7 +24354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &892071934
 SphereCollider:
@@ -25495,7 +25484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &921775542
 SphereCollider:
@@ -25763,7 +25752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &931670671
 SphereCollider:
@@ -26824,7 +26813,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 37ed8418d90e9e045a516e17a87d9e8f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7fe8a92ca37b82e4e9b123bc82b2054d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -27212,7 +27201,7 @@ PrefabInstance:
     - target: {fileID: 1429242965, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
       propertyPath: deathSound
       value: 
-      objectReference: {fileID: 8300000, guid: 44077ec19542e844bb00c879b3f47bb3, type: 3}
+      objectReference: {fileID: 8300000, guid: ca74d10fc6060dd41b182f0dff68ecca, type: 3}
     - target: {fileID: 1429242965, guid: 715e5c6c54417b641926661bb43e9fed, type: 3}
       propertyPath: scoreObject
       value: 
@@ -29760,7 +29749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1044998945
 SphereCollider:
@@ -30659,7 +30648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1083526870
 SphereCollider:
@@ -37035,7 +37024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1318139772
 SphereCollider:
@@ -39365,7 +39354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1399923883
 SphereCollider:
@@ -47408,7 +47397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1730677903
 SphereCollider:
@@ -47861,7 +47850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1759527014
 SphereCollider:
@@ -48122,7 +48111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1774457633
 SphereCollider:
@@ -49622,7 +49611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &1819340676
 SphereCollider:
@@ -58284,7 +58273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &2125835319
 SphereCollider:
@@ -58881,7 +58870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12534cc0c5d75be40971970b89fe896b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinCollectedSoundEffect: {fileID: 8300000, guid: 313fe235be90b104f8e9d597df5fd3c9,
+  coinCollectedSoundEffect: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345,
     type: 3}
 --- !u!135 &2141940756
 SphereCollider:
@@ -59216,6 +59205,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 6082142004820677849, guid: 63848541655b4324fa57c7d4a643fdc9,
+        type: 3}
+      propertyPath: coinCollectedSoundEffect
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c4c5f383b482f4488654e19b3a67345, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63848541655b4324fa57c7d4a643fdc9, type: 3}
 --- !u!1001 &6617566308304160830
