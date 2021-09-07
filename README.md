@@ -1,5 +1,5 @@
-# AIECPDAssignment
-This project has been created to demonstrate a basic understanding of using 3D Game Engine.
+# The Good Robot
+A 3D platformer that demonstrate a basic understanding of using 3D Game Engine and building for different platforms
 
 ## Goals
 - Implement basic player movement.
